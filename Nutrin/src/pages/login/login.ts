@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 // importando os validators e form builder
 import { Validators, FormBuilder } from '@angular/forms';
 
-
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
+import { LoginProvider } from '../../providers/login/login';
 
 /**
  * Generated class for the LoginPage page.
@@ -17,12 +18,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
+  providers:[
+    LoginProvider,
+  ]
 })
 export class LoginPage {
 
   dados_login : any = {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public FormBuilder: FormBuilder) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public FormBuilder: FormBuilder,
+    private loginProvider: LoginProvider
+  ) {
 
     this.dados_login = this.FormBuilder.group({
       username:["", Validators.required],
@@ -31,12 +40,27 @@ export class LoginPage {
 
   }
 
-  public getDadosLogin(){
-    console.log(this.dados_login.value);
-  }
+  public Login(){
+    var temp_username = this.dados_login.value.username;
+    var temp_senha = this.dados_login.value.password;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    this.loginProvider.validarLogin(temp_username,temp_senha).subscribe(
+      data=>{
+        console.log(data.Dados);
+        //if (data.Dados) {
+          //this.navCtrl.push(HomePage)
+        //}
+      }, error=>{
+        console.log(error);
+      }
+    )
+
+    //if (temp_username == this.username_teste && temp_senha == this.senha_teste) {
+    //  
+    //} else {
+    //  console.log("Login ou Senha invalida")
+    //}
+
   }
 
 }

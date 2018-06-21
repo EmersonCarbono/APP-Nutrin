@@ -14,7 +14,8 @@
 
 
 <ion-content padding>
-  <form [formGroup]="dados_login" (ngSubmit)="getDadosLogin()">
+  <h1>Nutrin</h1>
+  <form [formGroup]="dados_login" (ngSubmit)="Login()">
     <ion-list>
       <ion-item>
         <ion-label floating>Username</ion-label>
@@ -24,10 +25,12 @@
         <ion-label floating>Senha</ion-label>
         <ion-input type="password" name="senha" formControlName="password"></ion-input>
       </ion-item>
+      <p class="esqueceu-senha"><a href="">Esqueceu sua senha ?</a></p>
       <ion-item>
         <button [disabled]="dados_login.invalid"ion-button full block color="danger">Entrar</button>
       </ion-item>
     </ion-list>
+    
   </form>
 
 </ion-content>
