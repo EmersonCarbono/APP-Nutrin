@@ -46,10 +46,11 @@ export class LoginPage {
 
     this.loginProvider.validarLogin(temp_username,temp_senha).subscribe(
       data=>{
-        console.log(data.Dados);
-        //if (data.Dados) {
-          //this.navCtrl.push(HomePage)
-        //}
+        const response  = (data as any);
+        console.log(response.Dados);
+        if (response.Dados) {
+          this.navCtrl.push(HomePage)
+        }
       }, error=>{
         console.log(error);
       }
