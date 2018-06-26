@@ -4,15 +4,11 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { LoginProvider } from '../../providers/login/login';
+import { LoginProvider } from '../../providers/Login/login';
+import { TabsPage } from '../tabs/tabs';
+import { UserDataProvider } from '../../providers/UserData/userData';
+import { UserProvider } from '../../providers/User/user';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,6 +16,8 @@ import { LoginProvider } from '../../providers/login/login';
   templateUrl: 'login.html',
   providers:[
     LoginProvider,
+    UserDataProvider,
+    UserProvider
   ]
 })
 export class LoginPage {
@@ -30,7 +28,9 @@ export class LoginPage {
     public navCtrl: NavController, 
     public navParams: NavParams, 
     public FormBuilder: FormBuilder,
-    private loginProvider: LoginProvider
+    private loginProvider: LoginProvider,
+    private userProvider: UserProvider,
+    private userDataProvider: UserDataProvider,
   ) {
 
     this.dados_login = this.FormBuilder.group({
@@ -47,21 +47,22 @@ export class LoginPage {
     this.loginProvider.validarLogin(temp_username,temp_senha).subscribe(
       data=>{
         const response  = (data as any);
-        console.log(response.Dados);
         if (response.Dados) {
-          this.navCtrl.push(HomePage)
+          this.userProvider.pesquisarUser(temp_username).subscribe(
+            user_data=>{
+              const user_data_response = (user_data as any);
+              var username = user_data_response.Dados.username;
+              var nome = user_data_response.Dados.nome;
+              var tipo = user_data_response.Dados.tipo;
+              var email = user_data_response.Dados.email;
+              this.userDataProvider.setUserData(True, username, nome, email, tipo);
+            }
+          );
         }
       }, error=>{
         console.log(error);
       }
     )
-
-    //if (temp_username == this.username_teste && temp_senha == this.senha_teste) {
-    //  
-    //} else {
-    //  console.log("Login ou Senha invalida")
-    //}
-
   }
 
 }
