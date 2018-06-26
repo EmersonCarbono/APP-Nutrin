@@ -1,0 +1,14 @@
+{
+  "name": "Nutrin",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  } ,
+  "proxies": [
+    {
+      "path": "/nutrin_api",
+      "proxyUrl": "http://127.0.0.1:5000"
+    }
+  ]
+}
