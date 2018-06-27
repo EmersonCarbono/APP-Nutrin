@@ -7,12 +7,12 @@ let userData_key_name = "userData";
 export class UserDataProvider {
 
   private user_data = {
-    user : user,
-    codigo: codigo,
-    username : username,
-    nome : nome,
-    email: email,
-    tipo: tipo
+    id: "",
+    user : false,
+    username : "",
+    nome : "",
+    email: "",
+    tipo: ""
   }
 
   constructor() {
@@ -23,10 +23,10 @@ export class UserDataProvider {
     return localStorage.getItem(userData_key_name) || {user : false};
   }
 
-  setUserData(user: boolean, codigo: number, username: string, nome: string, email: string, tipo: string){
+  setUserData(user: boolean, id: number, username: string, nome: string, email: string, tipo: string){
     let user_data = {
       user : user,
-      codigo: codigo,
+      id: id,
       username : username,
       nome : nome,
       email: email,

@@ -18,7 +18,7 @@ import { TabsPage } from '../pages/tabs/tabs';
   ]
 })
 export class MyApp {
-  rootPage:any ;
+  rootPage:any = LoginPage;
 
   constructor(
     platform: Platform, 
@@ -29,8 +29,9 @@ export class MyApp {
     platform.ready().then(() => {
 
       let user_data = userDataProvider.getUserData();
-      if (!user_data.user) {
-        this.rootPage = LoginPage;
+      console.log(user_data);
+      if (user_data.user == false) {
+       this.rootPage = LoginPage;
       } else {
         this.rootPage = TabsPage;
       }

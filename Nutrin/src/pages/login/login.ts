@@ -55,9 +55,14 @@ export class LoginPage {
               var nome = user_data_response.Dados.nome;
               var tipo = user_data_response.Dados.tipo;
               var email = user_data_response.Dados.email;
-              this.userDataProvider.setUserData(True, username, nome, email, tipo);
+              var id = user_data_response.Dados.id;
+              this.userDataProvider.setUserData(true, id, username, nome, email, tipo);
+              console.log(user_data_response)
             }
           );
+          this.navCtrl.push(TabsPage)
+        } else {
+          console.log("Erro no login");
         }
       }, error=>{
         console.log(error);
