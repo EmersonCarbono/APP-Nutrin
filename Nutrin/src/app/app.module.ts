@@ -10,11 +10,16 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+// importando as paginas
 import { LoginPageModule } from '../pages/login/login.module';
+import { MenuPageModule } from '../pages/menu/menu.module';
+import { ConsultaPageModule } from '../pages/consulta/consulta.module';
 
 //importando modulo http
 import { HttpModule } from "@angular/http";
 import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     LoginPageModule,
+    MenuPageModule,
+    ConsultaPageModule,
     HttpClientModule,
     HttpModule,
   ],
