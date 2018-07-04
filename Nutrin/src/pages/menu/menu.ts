@@ -30,11 +30,15 @@ export class MenuPage {
   ) {}
 
   user_data = JSON.parse(this.userDataProvider.getUserData());
-  
+
   nome = this.user_data.nome;
   email = this.user_data.email;
   ionViewDidLoad() {
     console.log(this.nome);
   }
 
+
+  private logout(){
+    
+  }
 }
