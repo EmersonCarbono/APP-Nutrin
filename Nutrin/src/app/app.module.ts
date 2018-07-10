@@ -13,7 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 // importando as paginas
 import { LoginPageModule } from '../pages/login/login.module';
-import { MenuPageModule } from '../pages/menu/menu.module';
+import { menuPacientePageModule } from '../pages/Paciente/menuPaciente/menuPaciente.module';
 import { ConsultaPageModule } from '../pages/consulta/consulta.module';
 
 //importando modulo http
@@ -33,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     LoginPageModule,
-    MenuPageModule,
+    menuPacientePageModule,
     ConsultaPageModule,
     HttpClientModule,
     HttpModule,

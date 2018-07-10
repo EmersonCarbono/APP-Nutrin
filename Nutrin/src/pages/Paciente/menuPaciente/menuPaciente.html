@@ -5,14 +5,20 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <p>{{ nome }}</p>
-    <p>{{ email }}</p>
+    <p>Nome Usuario</p>
+    <p>Email Usuario</p>
     <ion-list>
+      <button ion-item (click)="openPerfil()">
+        Perfil
+      </button>
       <button ion-item (click)="openPage(homePage)">
-        Home
+        Consultas Agendadas
+      </button>
+      <button ion-item (click)="openPage(homePage)">
+        Marcar Consulta
       </button>
       <button ion-item (click)="logout()">
-          Sair
+        Sair
       </button>
     </ion-list>
   </ion-content>

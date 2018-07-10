@@ -5,9 +5,9 @@ import { Validators, FormBuilder } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginProvider } from '../../providers/Login/login';
-import { TabsPage } from '../tabs/tabs';
 import { UserDataProvider } from '../../providers/UserData/userData';
 import { UserProvider } from '../../providers/User/user';
+import { menuPacientePage } from '../Paciente/menuPaciente/menuPaciente';
 
 
 @IonicPage()
@@ -57,10 +57,10 @@ export class LoginPage {
               var email = user_data_response.Dados.email;
               var id = user_data_response.Dados.id;
               this.userDataProvider.setUserData(true, id, username, nome, email, tipo);
-              console.log(user_data_response)
+              console.log(user_data_response);
             }
           );
-          this.navCtrl.push(TabsPage)
+          this.navCtrl.push(menuPacientePage);
         } else {
           console.log("Erro no login");
         }

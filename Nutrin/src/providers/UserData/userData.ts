@@ -20,7 +20,7 @@ export class UserDataProvider {
   }
 
   getUserData(): any{
-    return localStorage.getItem(userData_key_name) || {user : false};
+    return JSON.parse(localStorage.getItem(userData_key_name)) || {user : false};
   }
 
   setUserData(user: boolean, id: number, username: string, nome: string, email: string, tipo: string){
@@ -34,5 +34,9 @@ export class UserDataProvider {
     }
 
     localStorage.setItem(userData_key_name, JSON.stringify(user_data));
+  }
+
+  limpar(){
+    localStorage.clear();
   }
 }

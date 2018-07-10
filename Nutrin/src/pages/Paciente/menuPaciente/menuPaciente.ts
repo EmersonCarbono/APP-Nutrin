@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ConsultaPage } from '../consulta/consulta';
 
 
-import { UserDataProvider } from '../../providers/UserData/userData';
+
+import { UserDataProvider } from '../../../providers/UserData/userData';
+import { LoginPage } from '../../login/login';
+import { PerfilPacientePage } from '../perfil-paciente/perfil-paciente';
 
 /**
  * Generated class for the MenuPage page.
@@ -14,14 +16,14 @@ import { UserDataProvider } from '../../providers/UserData/userData';
 
 @IonicPage()
 @Component({
-  selector: 'page-menu',
-  templateUrl: 'menu.html',
+  selector: 'page-menuPaciente',
+  templateUrl: 'menuPaciente.html',
   providers:[
     UserDataProvider,
   ]
 })
-export class MenuPage {
-  rootPage = ConsultaPage;
+export class menuPacientePage {
+  rootPage = PerfilPacientePage;
 
   constructor(
     public navCtrl: NavController,
@@ -29,16 +31,20 @@ export class MenuPage {
     private userDataProvider: UserDataProvider,
   ) {}
 
-  user_data = JSON.parse(this.userDataProvider.getUserData());
-
+  user_data = this.userDataProvider.getUserData();
   nome = this.user_data.nome;
   email = this.user_data.email;
+  
   ionViewDidLoad() {
-    console.log(this.nome);
+    console.log(this.nome, this.email)
   }
 
-
-  private logout(){
-    
+  openPerfil(){
+    this.navCtrl.push(PerfilPacientePage);
+  }
+  
+  logout(){
+    this.userDataProvider.limpar();
+    this.navCtrl.setRoot(LoginPage);
   }
 }
