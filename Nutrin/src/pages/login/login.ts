@@ -56,11 +56,17 @@ export class LoginPage {
               var tipo = user_data_response.Dados.tipo;
               var email = user_data_response.Dados.email;
               var id = user_data_response.Dados.id;
-              this.userDataProvider.setUserData(true, id, username, nome, email, tipo);
-              console.log(user_data_response);
+              var celular = user_data_response.Dados.celular;
+              this.userDataProvider.setUserData(true, id, username, nome, email, celular, tipo);
+
+              if (tipo == "P"){
+                this.navCtrl.push(menuPacientePage);
+              } else {
+                console.log("Nutri");
+              }
+              
             }
           );
-          this.navCtrl.push(menuPacientePage);
         } else {
           console.log("Erro no login");
         }

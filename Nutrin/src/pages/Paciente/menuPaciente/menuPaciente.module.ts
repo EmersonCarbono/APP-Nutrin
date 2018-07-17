@@ -3,6 +3,8 @@ import { IonicPageModule } from 'ionic-angular';
 import { menuPacientePage } from './menuPaciente';
 
 import { PerfilPacientePageModule } from '../perfil-paciente/perfil-paciente.module';
+import { MarcarConsultaPageModule } from '../marcar-consulta/marcar-consulta.module';
+import { ConsultasAgendadasPageModule } from '../consultas-agendadas/consultas-agendadas.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,9 @@ import { PerfilPacientePageModule } from '../perfil-paciente/perfil-paciente.mod
   ],
   imports: [
     IonicPageModule.forChild(menuPacientePage),
-    PerfilPacientePageModule
+    PerfilPacientePageModule,
+    MarcarConsultaPageModule,
+    ConsultasAgendadasPageModule
   ],
 })
 export class menuPacientePageModule {}

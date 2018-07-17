@@ -6,13 +6,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserDataProvider } from '../../../providers/UserData/userData';
 import { LoginPage } from '../../login/login';
 import { PerfilPacientePage } from '../perfil-paciente/perfil-paciente';
-
-/**
- * Generated class for the MenuPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ConsultasAgendadasPage } from '../consultas-agendadas/consultas-agendadas';
+import { MarcarConsultaPage } from '../marcar-consulta/marcar-consulta';
 
 @IonicPage()
 @Component({
@@ -32,8 +27,8 @@ export class menuPacientePage {
   ) {}
 
   user_data = this.userDataProvider.getUserData();
-  nome = this.user_data.nome;
-  email = this.user_data.email;
+  nome = this.user_data.dados_user.nome;
+  email = this.user_data.dados_user.email;
   
   ionViewDidLoad() {
     console.log(this.nome, this.email)
@@ -41,6 +36,12 @@ export class menuPacientePage {
 
   openPerfil(){
     this.navCtrl.push(PerfilPacientePage);
+  }
+  openConsultasAgendadas(){
+    this.navCtrl.push(ConsultasAgendadasPage);
+  }
+  openMarcarConsulta(){
+    this.navCtrl.push(MarcarConsultaPage);
   }
   
   logout(){
