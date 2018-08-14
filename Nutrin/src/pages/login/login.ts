@@ -7,7 +7,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginProvider } from '../../providers/Login/login';
 import { UserDataProvider } from '../../providers/UserData/userData';
 import { UserProvider } from '../../providers/User/user';
-import { menuPacientePage } from '../Paciente/menuPaciente/menuPaciente';
+
+
+import { HomePacientePage } from '../Paciente/home-paciente/home-paciente';
 
 
 @IonicPage()
@@ -60,7 +62,7 @@ export class LoginPage {
               this.userDataProvider.setUserData(true, id, username, nome, email, celular, tipo);
 
               if (tipo == "P"){
-                this.navCtrl.push(menuPacientePage);
+                this.navCtrl.setRoot(HomePacientePage);
               } else {
                 console.log("Nutri");
               }

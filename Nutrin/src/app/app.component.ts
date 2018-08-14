@@ -9,7 +9,8 @@ import { UserDataProvider } from '../providers/UserData/userData';
 
 // --------   Import Page    -------------
 import { LoginPage } from '../pages/login/login';
-import { TabsPage } from '../pages/tabs/tabs';
+import { HomePacientePage } from '../pages/Paciente/home-paciente/home-paciente';
+
 
 @Component({
   templateUrl: 'app.html',
@@ -29,11 +30,14 @@ export class MyApp {
     platform.ready().then(() => {
 
       let user_data = userDataProvider.getUserData();
-      console.log(user_data);
       if (user_data.user == false) {
-       this.rootPage = LoginPage;
+        this.rootPage = LoginPage;
       } else {
-        this.rootPage = TabsPage;
+        if (user_data.tipo == "P"){
+          this.rootPage = HomePacientePage;
+        } else {
+          console.log("Nutri");
+        }
       }
 
       statusBar.styleDefault();
