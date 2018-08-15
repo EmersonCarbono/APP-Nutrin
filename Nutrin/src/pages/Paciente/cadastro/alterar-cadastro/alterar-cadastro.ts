@@ -1,25 +1,19 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/* Importações de Page*/
-
 
 @IonicPage()
 @Component({
-  selector: 'page-home-paciente',
-  templateUrl: 'home-paciente.html',
+  selector: 'page-alterar-cadastro',
+  templateUrl: 'alterar-cadastro.html',
 })
-export class HomePacientePage {
+export class AlterarCadastroPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    
-  }
-
-  private pushPage(pagina: string){
-    this.navCtrl.push(pagina);
+    console.log('ionViewDidLoad AlterarCadastroPage');
   }
 
 }

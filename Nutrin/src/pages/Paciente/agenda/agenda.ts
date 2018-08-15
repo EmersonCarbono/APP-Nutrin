@@ -1,25 +1,18 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/* Importações de Page*/
-
-
 @IonicPage()
 @Component({
-  selector: 'page-home-paciente',
-  templateUrl: 'home-paciente.html',
+  selector: 'page-agenda',
+  templateUrl: 'agenda.html',
 })
-export class HomePacientePage {
+export class AgendaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    
-  }
-
-  private pushPage(pagina: string){
-    this.navCtrl.push(pagina);
+    console.log('ionViewDidLoad AgendaPage');
   }
 
 }
