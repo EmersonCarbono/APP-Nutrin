@@ -10,9 +10,11 @@ export class PacienteProvider {
  
   }
 
-  pesquisarUser(username){
-    return this.http.get(this.base_path + "/usuario/" + username)
+  public pesquisar_paciente(username){
+    return this.http.get(this.base_path + "/paciente/consultar/" + username)
   }
+
+
 
 
 

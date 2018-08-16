@@ -75,7 +75,7 @@ export class LoginPage {
       }, error=>{
         console.log(error);
       }
-    )
+    );
   }
 
 }
