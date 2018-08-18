@@ -33,7 +33,7 @@ export class MyApp {
       if (user_data.user == false) {
         this.rootPage = LoginPage;
       } else {
-        if (user_data.tipo == "P"){
+        if (user_data.dados_user.tipo == "P"){
           this.rootPage = HomePacientePage;
         } else {
           console.log("Nutri");

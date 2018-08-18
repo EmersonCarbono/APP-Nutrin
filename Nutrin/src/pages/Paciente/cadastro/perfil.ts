@@ -4,6 +4,9 @@ import { PacienteProvider } from '../../../providers/pacientes/paciente';
 import { UserDataProvider } from '../../../providers/UserData/userData';
 
 
+import { AlterarCadastroPage } from './alterar-cadastro/alterar-cadastro';
+
+
 @IonicPage()
 @Component({
   selector: 'page-perfil',
@@ -14,6 +17,8 @@ import { UserDataProvider } from '../../../providers/UserData/userData';
   ]
 })
 export class PerfilPage {
+  
+  dados_cadastro_user = new Array<any>();
 
   constructor(
     public navCtrl: NavController, 
@@ -21,23 +26,22 @@ export class PerfilPage {
     private pacienteProvider: PacienteProvider,
     private userDataProvider: UserDataProvider,
   ) {
+
   }
 
-  public getPaciente(username){
-    this.pacienteProvider.pesquisar_paciente(username).subscribe(
-      data => {
-        const response  = (data as any);
-        return response.Dados;
-      }, error => {
-        console.log(error);
-      }
-    );
-  }
+  user_atual = this.userDataProvider.getUserData().dados_user.username;
 
-  dados_paciente = this.getPaciente("ozob");
+  public pushAlterarCadastro(){
+    this.navCtrl.push(AlterarCadastroPage);
+  }
 
   ionViewDidLoad() {
-    console.log(this.dados_paciente);
+    this.pacienteProvider.pesquisar_paciente(this.user_atual).subscribe(
+      data => {
+        const cadastro_user = ( data as any);
+        this.dados_cadastro_user = cadastro_user.Dados;
+      }
+    );
   }
 
 
