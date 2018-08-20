@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { Validators, FormBuilder } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -9,7 +10,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AlterarCadastroPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  dados_altear_cadastro:any = {};
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public formBuilder: FormBuilder,
+  ) {
+    this.dados_altear_cadastro = this.formBuilder.group({
+      username:[],
+      nome:[],
+      email:[],
+      celular:[],
+      
+    })
   }
 
   ionViewDidLoad() {
