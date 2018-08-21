@@ -10,20 +10,27 @@ import { Validators, FormBuilder } from '@angular/forms';
 })
 export class AlterarCadastroPage {
 
-  dados_altear_cadastro:any = {};
+  dados_alterar_cadastro:any = {};
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public formBuilder: FormBuilder,
   ) {
-    this.dados_altear_cadastro = this.formBuilder.group({
-      username:[],
-      nome:[],
-      email:[],
-      celular:[],
-      
-    })
+    this.dados_alterar_cadastro = this.formBuilder.group({
+      nome: ["", Validators.required],
+      username: ["", Validators.required],
+      dataNascimento: ["", Validators.required],
+      sexo: ["", Validators.required],
+      email: ["", Validators.required],
+      celular: ["", Validators.required],
+      cidade: ["", Validators.required],
+      profissao: ["", Validators.required],
+    });
+  }
+
+  public alterarCadastro(){
+    console.log(this.dados_alterar_cadastro.value);
   }
 
   ionViewDidLoad() {

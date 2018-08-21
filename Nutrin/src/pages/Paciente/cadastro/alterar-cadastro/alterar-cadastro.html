@@ -1,84 +1,55 @@
-
 <ion-header>
 
-    <ion-navbar>
-      <ion-title>Alterar Castro</ion-title>
-    </ion-navbar>
-  
-  </ion-header>
-  
-  <ion-content padding>
-    <main class="formulario">
-    <form action="AlterarCadastro" method="POST" id="alterar">
+  <ion-navbar>
+    <ion-title>Alterar Castro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <main class="formulario">
+    <form action="AlterarCadastro" (ngSubmit)="alterarCadastro()" [formGroup]="dados_alterar_cadastro" method="POST" id="alterar">
       <ion-item>
         <ion-label>Nome:</ion-label>
-        <ion-input type="text" name="Nome" id="Nome" placeholder="Digite o seu nome"></ion-input>
-        <!-- <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input> -->
+        <ion-input type="text" name="nome" id="nome" formControlName="nome"></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label>Senha:</ion-label>
-          <ion-input type="password" name="Senha" id="Senha" placeholder="Digite a nova senha"></ion-input>
-          <!-- <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input> -->
-        </ion-item>
-        <ion-item>
-            <ion-label>Confirma Senha:</ion-label>
-            <ion-input type="password" name="Senha" id="Senha"></ion-input>
-            <!-- <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input> -->
-          </ion-item>
-          <ion-item>
-              <ion-label>Cidade:</ion-label>
-              <ion-input type="text" name="cidade" id="cidade" placeholder="Digite a sua cidade"></ion-input>
-              <!-- <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input> -->
-            </ion-item>
-          
+        <ion-label>Nome de usuario:</ion-label>
+        <ion-input type="text" name="username" id="username" formControlName="username"></ion-input>
+      </ion-item>
       <ion-item>
-        <ion-label>Data de Nascimento:</ion-label>
-        <ion-input type="number" name="Idade" id="Idade" placeholder=" 99/99/9999"></ion-input>
-        <!-- <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input> -->
+        <ion-label for="dataNascimento">Data de Nascimento</ion-label>
+        <ion-input type="date" name="dataNascimento" id="dataNascimento" formControlName="dataNascimento"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>E-mail:</ion-label>
-        <ion-input type="email" name="Email" id="Email" placeholder="Digite o seu E-mail"></ion-input>
-        <!-- <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input> -->
+        <ion-input type="email" name="email" id="email" formControlName="email"></ion-input>
       </ion-item>
-      <ion-item>
-        
-      <ion-item>
-        <ion-label>Celular:</ion-label>
-        <ion-input type="text" name="Celular" id="Celular" placeholder="Numero do Celular"></ion-input>
-        <!-- <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input> -->
-      </ion-item>
-      <ion-item>
-        <ion-label>Endereço:</ion-label>
-        <ion-input type="text" name="Endereço" id="Endereço" placeholder="Digite o seu endereço"></ion-input>
-        <!-- <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input> -->
-      </ion-item>
-      <ion-item>
-          <ion-label>Profissão:</ion-label>
-          <ion-input type="text" name="profissao" id="profissao" placeholder="Digite a sua profissao"></ion-input>
-          <!-- <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input> -->
-        </ion-item>
-      <ion-label>Ojetivo:</ion-label>
-              <ion-textarea name="cidade" id="cidade" placeholder="Digite a sua cidade"></ion-textarea>
-              <!-- <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input> -->
-            </ion-item>
-      <ion-list radio-group>
+      <ion-row radio-group formControlName="sexo">
         <ion-item>
           <ion-label>Masculino</ion-label>
-          <ion-radio checked="false" name="Sexo" id="Sexo" value="M"></ion-radio>
+          <ion-radio checked="false" name="sexo" id="sexo" value="M"></ion-radio>
         </ion-item>
         <ion-item>
           <ion-label>Feminino</ion-label>
-          <ion-radio checked="false" id="Sexo" name="Sexo" value="F"></ion-radio>
+          <ion-radio checked="false" id="sexo" name="sexo" value="F"></ion-radio>
         </ion-item>
-      </ion-list>
+      </ion-row>
+      <ion-item>
+        <ion-label>Celular:</ion-label>
+        <ion-input type="text" name="celular" id="celular" formControlName="celular"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Cidade:</ion-label>
+        <ion-input type="text" name="cidade" id="cidade" formControlName="cidade"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Profissão:</ion-label>
+        <ion-input type="text" name="profissao" id="profissao" formControlName="profissao"></ion-input>
+      </ion-item>
+      <div class="btn">
+        <button [disabled]="dados_alterar_cadastro.invalid" ion-button full block color="danger">Salvar</button>
+      </div>
     </form>
   </main>
-    <div class="btn">
-    <button ion-button round  type="submit" form="alterar" value="submit">
-        Confirmar
-      </button>
-    </div>
-  
-  
-  </ion-content>
+</ion-content>
