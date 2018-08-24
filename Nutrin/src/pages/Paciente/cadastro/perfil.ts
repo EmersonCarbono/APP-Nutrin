@@ -18,7 +18,7 @@ import { AlterarCadastroPage } from './alterar-cadastro/alterar-cadastro';
 })
 export class PerfilPage {
   
-  dados_cadastro_user = new Array<any>();
+  public dados_cadastro_user = new Array<any>();
 
   constructor(
     public navCtrl: NavController, 

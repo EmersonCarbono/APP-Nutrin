@@ -1,3 +1,5 @@
 page-alterar-cadastro {
-
+    .campo.ng-invalid.ng-touched:not(form){
+        border-bottom: 1px solid red;
+    }
 }
