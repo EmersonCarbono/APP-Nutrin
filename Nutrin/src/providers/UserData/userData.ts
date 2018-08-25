@@ -14,17 +14,13 @@ export class UserDataProvider {
     return JSON.parse(localStorage.getItem(userData_key_name)) || {user : false};
   }
 
-  setUserData(user: boolean, id: number, username: string, nome: string, email: string, celular: string, tipo: string){
+  setUserData(
+    user: boolean,
+    response_dados_user
+  ){
     let user_data = {
       user : user,
-      dados_user : {
-        id : id,
-        username: username,
-        nome: nome,
-        email: email,
-        celular: celular,
-        tipo: tipo
-      }
+      dados_user : response_dados_user
     }
 
     localStorage.setItem(userData_key_name, JSON.stringify(user_data));

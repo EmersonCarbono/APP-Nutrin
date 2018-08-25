@@ -18,8 +18,6 @@ import { AlterarCadastroPage } from './alterar-cadastro/alterar-cadastro';
 })
 export class PerfilPage {
   
-  public dados_cadastro_user = new Array<any>();
-
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -29,19 +27,13 @@ export class PerfilPage {
 
   }
 
-  user_atual = this.userDataProvider.getUserData().dados_user.username;
+  dados_cadastro_user = this.userDataProvider.getUserData().dados_user;
 
   public pushAlterarCadastro(){
     this.navCtrl.push(AlterarCadastroPage);
   }
 
   ionViewDidLoad() {
-    this.pacienteProvider.pesquisar_paciente(this.user_atual).subscribe(
-      data => {
-        const cadastro_user = ( data as any);
-        this.dados_cadastro_user = cadastro_user.Dados;
-      }
-    );
   }
 
 

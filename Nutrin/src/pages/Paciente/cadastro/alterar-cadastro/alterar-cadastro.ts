@@ -19,6 +19,7 @@ import { UserDataProvider } from '../../../../providers/UserData/userData';
 export class AlterarCadastroPage {
 
   dados_alterar_cadastro:any = {};
+  dados_cadastro_user = this.userDataProvider.getUserData().dados_user;
 
 
   constructor(
@@ -28,33 +29,31 @@ export class AlterarCadastroPage {
     private pacienteProvider: PacienteProvider,
     private userDataProvider: UserDataProvider,
   ) {
-    var dados_atuais_user = this.getDadosAtuais();
-    const response  = (dados_atuais_user as any);
-    console.log(response);
+
     this.dados_alterar_cadastro = this.formBuilder.group({
-      nome: new FormControl("", Validators.required),
-      username: new FormControl("username_teste", Validators.compose([
+      nome: new FormControl(this.dados_cadastro_user.nome, Validators.required),
+      username: new FormControl(this.dados_cadastro_user.username, Validators.compose([
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(25)
       ])),
-      dataNascimento: new FormControl("2018-08-08", Validators.required),
-      sexo: new FormControl("M", Validators.required),
-      email: new FormControl("", Validators.compose([
+      dataNascimento: new FormControl(this.dados_cadastro_user.dataNascimento, Validators.required),
+      sexo: new FormControl(this.dados_cadastro_user.sexo, Validators.required),
+      email: new FormControl(this.dados_cadastro_user.email, Validators.compose([
         Validators.required,
         Validators.email
       ])),
-      celular: new FormControl("", Validators.compose([
+      celular: new FormControl(this.dados_cadastro_user.celular, Validators.compose([
         Validators.required,
         Validators.minLength(11),
         Validators.maxLength(11),
       ])),
-      cidade: new FormControl("", Validators.compose([
+      cidade: new FormControl(this.dados_cadastro_user.cidade, Validators.compose([
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(30)
       ])),
-      profissao: new FormControl("teste", Validators.compose([
+      profissao: new FormControl(this.dados_cadastro_user.profissao, Validators.compose([
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(100)
@@ -62,18 +61,36 @@ export class AlterarCadastroPage {
     });
   }
 
-  private getDadosAtuais(){
-    var user_atual = this.userDataProvider.getUserData().dados_user.username;
-    this.pacienteProvider.pesquisar_paciente(user_atual).subscribe(
-      data => {
-        const cadastro_user = ( data as any);
-        var dados_atuais_user = cadastro_user.Dados;
-        return dados_atuais_user;
-      }
-    );
-  }
+  private alterarCadastro(){
+    var username_atual =  this.dados_cadastro_user.username;
+    var tipo =  this.dados_cadastro_user.tipo;
+    var objetivo =  this.dados_cadastro_user.objetivo;
 
-  public alterarCadastro(){
+    var nome =  this.dados_alterar_cadastro.value.nome;
+    var username =   this.dados_alterar_cadastro.value.username;
+    var dataNascimento =   this.dados_alterar_cadastro.value.dataNascimento;
+    var sexo =   this.dados_alterar_cadastro.value.sexo;
+    var email =   this.dados_alterar_cadastro.value.email;
+    var celular =   this.dados_alterar_cadastro.value.celular;
+    var cidade =   this.dados_alterar_cadastro.value.cidade;
+    var profissao =   this.dados_alterar_cadastro.value.profissao;
+    this.pacienteProvider.alterar_paciente(
+      username_atual,
+      nome,
+      username,
+      dataNascimento,
+      sexo,
+      email,
+      celular,
+      cidade,
+      profissao,
+      tipo,
+      objetivo
+      ).subscribe(
+      data => {
+        console.log(data);
+      }
+    )
   }
 
   ionViewDidLoad() {

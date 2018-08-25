@@ -10,6 +10,7 @@ import { UserProvider } from '../../providers/User/user';
 
 
 import { HomePacientePage } from '../Paciente/home-paciente/home-paciente';
+import { PacienteProvider } from '../../providers/pacientes/paciente';
 
 
 @IonicPage()
@@ -19,7 +20,8 @@ import { HomePacientePage } from '../Paciente/home-paciente/home-paciente';
   providers:[
     LoginProvider,
     UserDataProvider,
-    UserProvider
+    UserProvider,
+    PacienteProvider
   ]
 })
 export class LoginPage {
@@ -32,6 +34,7 @@ export class LoginPage {
     public FormBuilder: FormBuilder,
     private loginProvider: LoginProvider,
     private userProvider: UserProvider,
+    private pacienteProvider: PacienteProvider,
     private userDataProvider: UserDataProvider,
   ) {
 
@@ -53,20 +56,18 @@ export class LoginPage {
           this.userProvider.pesquisarUser(temp_username).subscribe(
             user_data=>{
               const user_data_response = (user_data as any);
-              var username = user_data_response.Dados.username;
-              var nome = user_data_response.Dados.nome;
-              var tipo = user_data_response.Dados.tipo;
-              var email = user_data_response.Dados.email;
-              var id = user_data_response.Dados.id;
-              var celular = user_data_response.Dados.celular;
-              this.userDataProvider.setUserData(true, id, username, nome, email, celular, tipo);
-
-              if (tipo == "P"){
+              if (user_data_response.Dados.tipo == "P"){
+                this.pacienteProvider.pesquisar_paciente(user_data_response.Dados.username).subscribe(
+                  paciente_data => {
+                    const paciente_dados = (paciente_data as any);
+                    this.userDataProvider.setUserData(true, paciente_dados.Dados);
+                    console.log(paciente_dados)
+                  }
+                );
                 this.navCtrl.setRoot(HomePacientePage);
               } else {
                 console.log("Nutri");
               }
-              
             }
           );
         } else {
