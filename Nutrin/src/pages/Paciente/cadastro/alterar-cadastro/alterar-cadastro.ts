@@ -5,6 +5,8 @@ import { Validators, FormBuilder, FormControl } from '@angular/forms';
 import { PacienteProvider } from '../../../../providers/pacientes/paciente';
 import { UserDataProvider } from '../../../../providers/UserData/userData';
 
+import { PerfilPage } from '../perfil';
+
 
 @IonicPage()
 @Component({
@@ -13,7 +15,6 @@ import { UserDataProvider } from '../../../../providers/UserData/userData';
   providers:[
     PacienteProvider,
     UserDataProvider,
-
   ]
 })
 export class AlterarCadastroPage {
@@ -89,6 +90,14 @@ export class AlterarCadastroPage {
       ).subscribe(
       data => {
         console.log(data);
+        this.pacienteProvider.pesquisar_paciente(username).subscribe(
+          paciente_data => {
+            const paciente_dados = (paciente_data as any);
+            this.userDataProvider.setUserData(true, paciente_dados.Dados);
+            console.log(paciente_dados);
+            this.navCtrl.setRoot(PerfilPage);
+          }
+        );
       }
     )
   }
