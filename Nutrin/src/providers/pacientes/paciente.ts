@@ -26,9 +26,10 @@ export class PacienteProvider {
       "cidade": cidade,
       "profissao": profissao,
       "tipo": tipo,
-      "objetivo": objetivo,
-    }
-    return this.http.post(this.base_path + "/paciente/alterar-paciente/", dados_paciente)
+      "objetivo": objetivo
+    };
+
+    return this.http.put(this.base_path + "/paciente/alterar-paciente", dados_paciente)
   }
 
 

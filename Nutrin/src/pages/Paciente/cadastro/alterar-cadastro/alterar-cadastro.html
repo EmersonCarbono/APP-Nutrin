@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <main class="formulario">
-    <form action="AlterarCadastro" (ngSubmit)="alterarCadastro()" [formGroup]="dados_alterar_cadastro" method="POST" id="alterar">
+    <form action="AlterarCadastro" (ngSubmit)="alterarCadastro()" [formGroup]="dados_alterar_cadastro" method="PUT" id="alterar">
       <ion-item>
         <ion-label floating>Nome:</ion-label>
         <ion-input type="text" class="campo" name="nome" id="nome" formControlName="nome"></ion-input>
