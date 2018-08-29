@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Alert } from 'ionic-angular';
 
 import { Validators, FormBuilder, FormControl } from '@angular/forms';
 import { PacienteProvider } from '../../../../providers/pacientes/paciente';
 import { UserDataProvider } from '../../../../providers/UserData/userData';
 
 import { PerfilPage } from '../perfil';
+import { AlertController } from 'ionic-angular';
+import { HomePacientePage } from '../../home-paciente/home-paciente';
 
 
 @IonicPage()
@@ -29,6 +31,7 @@ export class AlterarCadastroPage {
     public formBuilder: FormBuilder,
     private pacienteProvider: PacienteProvider,
     private userDataProvider: UserDataProvider,
+    public alertCtrl: AlertController
   ) {
 
     this.dados_alterar_cadastro = this.formBuilder.group({
@@ -48,6 +51,7 @@ export class AlterarCadastroPage {
         Validators.required,
         Validators.minLength(11),
         Validators.maxLength(11),
+        
       ])),
       cidade: new FormControl(this.dados_cadastro_user.cidade, Validators.compose([
         Validators.required,
@@ -60,6 +64,15 @@ export class AlterarCadastroPage {
         Validators.maxLength(100)
       ])),
     });
+  }
+
+  private showAlert(titulo, mensagem) {
+    const alert = this.alertCtrl.create({
+      title: titulo,
+      subTitle: mensagem,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   private alterarCadastro(){
@@ -89,15 +102,19 @@ export class AlterarCadastroPage {
       objetivo
       ).subscribe(
       data => {
-        console.log(data);
-        this.pacienteProvider.pesquisar_paciente(username).subscribe(
-          paciente_data => {
-            const paciente_dados = (paciente_data as any);
-            this.userDataProvider.setUserData(true, paciente_dados.Dados);
-            console.log(paciente_dados);
-            this.navCtrl.setRoot(PerfilPage);
-          }
-        );
+        const response = (data as any);
+        if(response.Status == "Sucesso"){
+          this.pacienteProvider.pesquisar_paciente(username).subscribe(
+            paciente_data => {
+              const paciente_dados = (paciente_data as any);
+              this.userDataProvider.setUserData(true, paciente_dados.Dados);
+              this.showAlert(response.Status, response.Mensagem);
+              this.navCtrl.push(HomePacientePage);
+            }
+          );
+        } else{
+          this.showAlert(response.Status, response.Mensagem);
+        }
       }
     )
   }

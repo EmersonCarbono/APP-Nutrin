@@ -18,4 +18,8 @@ export class LoginProvider {
     return this.http.post(this.base_path + "/login", dados);
   }
 
+  logout(){
+    
+  }
+
 }
