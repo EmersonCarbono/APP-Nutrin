@@ -9,11 +9,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // importando as paginas
 import { LoginPageModule } from '../pages/login/login.module';
 import { HomePacientePageModule } from '../pages/Paciente/home-paciente/home-paciente.module';
+import { HomeNutricionistaPageModule } from '../pages/Nutricionista/home-nutricionista/home-nutricionista.module';
 
 //importando modulo http
 import { HttpModule } from "@angular/http";
 import { HttpClientModule } from '@angular/common/http';
 import { MenuPacientePageModule } from '../pages/Paciente/menu-paciente/menu-paciente.module';
+
 
 
 
@@ -27,6 +29,7 @@ import { MenuPacientePageModule } from '../pages/Paciente/menu-paciente/menu-pac
     LoginPageModule,
     HomePacientePageModule,
     MenuPacientePageModule,
+    HomeNutricionistaPageModule,
     HttpClientModule,
     HttpModule,
   ],

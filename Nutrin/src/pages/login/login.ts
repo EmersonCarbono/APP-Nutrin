@@ -11,6 +11,7 @@ import { UserProvider } from '../../providers/User/user';
 
 import { HomePacientePage } from '../Paciente/home-paciente/home-paciente';
 import { PacienteProvider } from '../../providers/pacientes/paciente';
+import { HomeNutricionistaPage } from '../Nutricionista/home-nutricionista/home-nutricionista';
 
 
 @IonicPage()
@@ -66,7 +67,7 @@ export class LoginPage {
                 );
                 this.navCtrl.setRoot(HomePacientePage);
               } else {
-                console.log("Nutri");
+                this.navCtrl.setRoot(HomeNutricionistaPage);
               }
             }
           );
