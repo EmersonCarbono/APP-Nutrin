@@ -1,21 +1,29 @@
 page-login {
 
+    .scroll-content { /* background content */
+        background-color: #1c2028;
+    }
 
-    h1{
+    .item { /* background list item */
+        background-color: transparent;
+    }
+
+    .logo {
         text-align: center;
-        
+        margin: 50px 0;
     }
 
-    p.esqueceu-senha {
-        padding-top:  0px;
-        display:  flex;
-        justify-content:  center;
-        margin-top: 2%;
+    .button-login {
+        margin: 20px 0;
     }
 
-    p.esqueceu-senha a {
-        text-decoration: none;
+    .extras {
+        text-align: center;
+        margin: 50px 0;
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
     }
-
-
 }

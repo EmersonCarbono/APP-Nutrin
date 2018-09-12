@@ -1,27 +1,25 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
-  <h1>Nutrin</h1>
+  
+  <div class="logo">
+    <h1>NUTRIN</h1>
+  </div>
+
   <form [formGroup]="dados_login" (ngSubmit)="Login()">
-    <ion-list>
       <ion-item>
-        <ion-label floating>Username</ion-label>
+        <ion-label color="secondary" floating><ion-icon></ion-icon>Username</ion-label>
         <ion-input type="text" name="username" formControlName="username"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label floating>Senha</ion-label>
+        <ion-label color="secondary" floating>Senha</ion-label>
         <ion-input type="password" name="senha" formControlName="password"></ion-input>
       </ion-item>
-      <p class="esqueceu-senha"><a href="">Esqueceu sua senha ?</a></p>
-      <ion-item>
-        <button [disabled]="dados_login.invalid" ion-button full block color="danger">Entrar</button>
-      </ion-item>
-    </ion-list>
-    
+      <div class="button-login">
+        <button [disabled]="dados_login.invalid" ion-button full block color="secondary">Entrar</button>
+      </div>
   </form>
+
+  <div class="extras">
+    <a href="">Esqueceu sua senha ?</a>
+  </div>
 
 </ion-content>
