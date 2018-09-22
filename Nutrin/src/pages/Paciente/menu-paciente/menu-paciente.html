@@ -1,23 +1,22 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
   <ion-content>
+    <div class="pre-perfil">
+      <img src="../../../assets/imgs/fotoPerfil.jpg" alt="Foto Perfil" />
+      <p>Victor Codonho</p>
+      <button ion-button outline color="secondary">Perfil</button>
+      <button ion-button outline color="danger">Sair</button>
+    </div>
+
     <ion-list>
-      <button ion-item (click)="pushPage('PerfilPage')">
-        Perfil
-      </button>
-      <button ion-item (click)="pushPage('AgendaPage')">
-        Agenda
-      </button>
-      <button ion-item (click)="pushPage('ListarConsultasPage')">
-        Lista de Consultas
-      </button>
-      <button ion-item (click)="logout()">
-        Sair
-      </button>
+      <ion-item class="item-dark" (click)="pushPage('HomePacientePage')">
+        <p><ion-icon class="icon-menu" name="home"></ion-icon> Home</p>
+      </ion-item>
+      <ion-item class="item-light" (click)="pushPage('ListarConsultasPage')">
+        <p><ion-icon class="icon-menu" name="calendar"></ion-icon> Consultas</p>
+      </ion-item>
+      <ion-item class="item-dark" (click)="logout()">
+        <p><ion-icon class="icon-menu" name="create"></ion-icon> Cadastrar</p>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
