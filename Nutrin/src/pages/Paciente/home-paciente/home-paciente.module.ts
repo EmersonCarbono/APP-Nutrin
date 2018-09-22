@@ -4,7 +4,6 @@ import { HomePacientePage } from './home-paciente';
 
 
 import { PerfilPageModule } from '../cadastro/perfil.module';
-import { AgendaPageModule } from '../agenda/agenda.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +12,6 @@ import { AgendaPageModule } from '../agenda/agenda.module';
   imports: [
     IonicPageModule.forChild(HomePacientePage),
     PerfilPageModule,
-    AgendaPageModule,
   ],
 })
 export class HomePacientePageModule {}

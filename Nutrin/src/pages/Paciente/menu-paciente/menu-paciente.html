@@ -3,8 +3,8 @@
     <div class="pre-perfil">
       <img src="../../../assets/imgs/fotoPerfil.jpg" alt="Foto Perfil" />
       <p>Victor Codonho</p>
-      <button ion-button outline color="secondary">Perfil</button>
-      <button ion-button outline color="danger">Sair</button>
+      <button ion-button outline color="secondary" (click)="pushPage('PerfilPage')">Perfil</button>
+      <button ion-button outline color="danger" (click)="logout()">Sair</button>
     </div>
 
     <ion-list>
@@ -14,8 +14,8 @@
       <ion-item class="item-light" (click)="pushPage('ListarConsultasPage')">
         <p><ion-icon class="icon-menu" name="calendar"></ion-icon> Consultas</p>
       </ion-item>
-      <ion-item class="item-dark" (click)="logout()">
-        <p><ion-icon class="icon-menu" name="create"></ion-icon> Cadastrar</p>
+      <ion-item class="item-dark" (click)="pushPage('SolicitarConsultaPage')">
+        <p><ion-icon class="icon-menu" name="create"></ion-icon> Solicitar Consulta</p>
       </ion-item>
     </ion-list>
   </ion-content>
