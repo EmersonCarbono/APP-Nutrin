@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -11,7 +11,8 @@ export class ListarConsultasPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public actionsheetCtrl: ActionSheetController
+    public actionsheetCtrl: ActionSheetController,
+    private alertCtrl: AlertController
   ) {}
 
   // FUNÇÃO MENU LISTA + BOTOES EDITAR E REMOVER
@@ -39,6 +40,43 @@ export class ListarConsultasPage {
       ]
     });
     actionSheet.present();
+  }
+
+  solicitarConsultaAlert() {
+    let alert = this.alertCtrl.create({
+      title: "Solicitar Consulta",
+      subTitle: "Preencha o Formuario, logo você receberá uma confirmação",
+      inputs: [
+        {
+          name: "Data",
+          placeholder: "Data da Consulta"
+        },
+        {
+          name: "Hora",
+          placeholder: "Horario da Consulta"
+        },
+        {
+          name: "Observações",
+          placeholder: "Observações da consulta"
+        }
+      ],
+      buttons: [
+        {
+          text: "Cancelar",
+          role: "cancel",
+          handler: data => {
+            console.log("Cancelado");
+          }
+        },
+        {
+          text: "Enviar",
+          handler: data => {
+            console.log("Enviado"); // aqui terá uma função de validação e envio.
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   ionViewDidLoad() {

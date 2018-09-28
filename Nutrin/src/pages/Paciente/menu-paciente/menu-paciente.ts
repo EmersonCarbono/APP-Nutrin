@@ -23,11 +23,11 @@ export class MenuPacientePage {
     
   }
 
-  private pushPage(pagina: string){
+  pushPage(pagina: string){
     this.navCtrl.push(pagina);
   }
 
-  private logout(){
+  logout(){
     this.userDataProvider.limpar();
     this.navCtrl.setRoot(LoginPage);
   }

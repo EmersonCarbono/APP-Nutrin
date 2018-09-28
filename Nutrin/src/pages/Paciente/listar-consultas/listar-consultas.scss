@@ -11,6 +11,20 @@ page-listar-consultas {
         background-color: #1c2028;
     }
 
+    .toolbar {
+        .item {
+            background-color: transparent;
+        }
+
+        .item-block .item-inner {
+            border-bottom: none;
+        }
+
+        .icon {
+            color: #fff;
+        }
+    }
+
     .agenda-consulta {
         ion-note {
             margin-right: 20px;
