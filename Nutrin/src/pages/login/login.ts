@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginProvider } from '../../providers/Login/login';
+import { LoginProvider } from '../../providers/login/login';
 import { UserDataProvider } from '../../providers/UserData/userData';
 import { UserProvider } from '../../providers/User/user';
 
