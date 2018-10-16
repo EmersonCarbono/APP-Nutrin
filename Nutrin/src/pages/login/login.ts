@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 // importando os validators e form builder
 import { Validators, FormBuilder } from '@angular/forms';
+import { ToastController} from 'ionic-angular';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login';
@@ -11,6 +12,10 @@ import { UserProvider } from '../../providers/User/user';
 
 import { HomePacientePage } from '../Paciente/home-paciente/home-paciente';
 import { PacienteProvider } from '../../providers/pacientes/paciente';
+
+
+import { HomeNutricionistaPage } from '../Nutricionista/home-nutricionista/home-nutricionista';
+
 
 
 @IonicPage()
@@ -36,6 +41,7 @@ export class LoginPage {
     private userProvider: UserProvider,
     private pacienteProvider: PacienteProvider,
     private userDataProvider: UserDataProvider,
+    public toastCtrl: ToastController,
   ) {
 
     this.dados_login = this.FormBuilder.group({
@@ -43,6 +49,17 @@ export class LoginPage {
       password:["", Validators.required],
     })
 
+  }
+
+  private toastLoginInvalido(){
+    const toast = this.toastCtrl.create({
+      message: "Usuário ou senha inválidos",
+      duration : 3000,
+      showCloseButton: true,
+      closeButtonText: "OK",
+      position: "bottom",
+    });
+    toast.present();
   }
 
   public Login(){
@@ -66,12 +83,12 @@ export class LoginPage {
                 );
                 this.navCtrl.setRoot(HomePacientePage);
               } else {
-                console.log("Nutri");
+                this.navCtrl.setRoot(HomeNutricionistaPage);
               }
             }
           );
         } else {
-          console.log("Erro no login");
+          this.toastLoginInvalido();
         }
       }, error=>{
         console.log(error);

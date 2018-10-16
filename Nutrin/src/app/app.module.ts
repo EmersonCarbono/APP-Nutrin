@@ -15,6 +15,8 @@ import { HttpModule } from "@angular/http";
 import { HttpClientModule } from '@angular/common/http';
 import { MenuPacientePageModule } from '../pages/Paciente/menu-paciente/menu-paciente.module';
 
+import { HomeNutricionistaPageModule } from '../pages/Nutricionista/home-nutricionista/home-nutricionista.module';
+
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { MenuPacientePageModule } from '../pages/Paciente/menu-paciente/menu-pac
     IonicModule.forRoot(MyApp),
     LoginPageModule,
     HomePacientePageModule,
+    HomeNutricionistaPageModule,
     MenuPacientePageModule,
     HttpClientModule,
     HttpModule,
