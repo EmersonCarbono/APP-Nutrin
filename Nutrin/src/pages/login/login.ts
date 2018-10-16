@@ -78,11 +78,11 @@ export class LoginPage {
                   paciente_data => {
                     const paciente_dados = (paciente_data as any);
                     this.userDataProvider.setUserData(true, paciente_dados.Dados);
-                    console.log(paciente_dados)
                   }
                 );
                 this.navCtrl.setRoot(HomePacientePage);
               } else {
+                this.userDataProvider.setUserData(true, user_data_response.Dados);
                 this.navCtrl.setRoot(HomeNutricionistaPage);
               }
             }
