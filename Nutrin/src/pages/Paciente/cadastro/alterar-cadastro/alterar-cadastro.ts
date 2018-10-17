@@ -55,13 +55,16 @@ export class AlterarCadastroPage {
       ])),
       cidade: new FormControl(this.dados_cadastro_user.cidade, Validators.compose([
         Validators.required,
-        Validators.minLength(5),
+        Validators.minLength(4),
         Validators.maxLength(30)
       ])),
       profissao: new FormControl(this.dados_cadastro_user.profissao, Validators.compose([
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(100)
+      ])),
+      altura: new FormControl(this.dados_cadastro_user.altura, Validators.compose([
+        Validators.required
       ])),
     });
   }
@@ -88,6 +91,8 @@ export class AlterarCadastroPage {
     var celular =   this.dados_alterar_cadastro.value.celular;
     var cidade =   this.dados_alterar_cadastro.value.cidade;
     var profissao =   this.dados_alterar_cadastro.value.profissao;
+    var altura =   this.dados_alterar_cadastro.value.altura;
+    console.log(dataNascimento);
     this.pacienteProvider.alterar_paciente(
       username_atual,
       nome,
@@ -99,7 +104,8 @@ export class AlterarCadastroPage {
       cidade,
       profissao,
       tipo,
-      objetivo
+      objetivo,
+      altura
       ).subscribe(
       data => {
         const response = (data as any);
@@ -125,3 +131,4 @@ export class AlterarCadastroPage {
   }
 
 }
+
