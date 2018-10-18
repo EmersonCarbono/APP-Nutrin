@@ -10,7 +10,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home-paciente.html',
 })
 export class HomePacientePage {
-
+  activeMenu: string = "menu-nutricionista";
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

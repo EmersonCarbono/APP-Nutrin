@@ -9,12 +9,11 @@ import { LoginProvider } from '../../providers/login/login';
 import { UserDataProvider } from '../../providers/UserData/userData';
 import { UserProvider } from '../../providers/User/user';
 
+import { SidePage } from '../side/side';
 
-import { HomePacientePage } from '../Paciente/home-paciente/home-paciente';
+
 import { PacienteProvider } from '../../providers/pacientes/paciente';
 
-
-import { HomeNutricionistaPage } from '../Nutricionista/home-nutricionista/home-nutricionista';
 
 
 
@@ -62,6 +61,13 @@ export class LoginPage {
     toast.present();
   }
 
+  public getTipoUser(){
+
+  }
+
+
+
+
   public Login(){
     var temp_username = this.dados_login.value.username;
     var temp_senha = this.dados_login.value.password;
@@ -80,11 +86,13 @@ export class LoginPage {
                     this.userDataProvider.setUserData(true, paciente_dados.Dados);
                   }
                 );
-                this.navCtrl.setRoot(HomePacientePage);
               } else {
                 this.userDataProvider.setUserData(true, user_data_response.Dados);
-                this.navCtrl.setRoot(HomeNutricionistaPage);
               }
+              this.navCtrl.setRoot(SidePage, {
+                tipo_user : user_data_response.Dados.tipo,
+                nome_user: user_data_response.Dados.nome
+              });
             }
           );
         } else {
