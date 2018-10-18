@@ -1,7 +1,12 @@
 <ion-header>
-  <button ion-button icon-only menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
+  <ion-navbar>
+    <button ion-button [menuToggle]="activeMenu">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-navbar>
 </ion-header>
 <ion-content class="card-background-page">
 

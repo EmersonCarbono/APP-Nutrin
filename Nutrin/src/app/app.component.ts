@@ -6,11 +6,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 //--------   Import Providers    -------------
 import { UserDataProvider } from '../providers/UserData/userData';
+import { PacienteProvider } from '../providers/pacientes/paciente';
 
 // --------   Import Page    -------------
 import { LoginPage } from '../pages/login/login';
-import { PacienteProvider } from '../providers/pacientes/paciente';
-import { MenuPacientePage } from '../pages/Paciente/menu-paciente/menu-paciente';
+import { SidePage } from '../pages/side/side';
+
 
 
 @Component({
@@ -23,7 +24,6 @@ import { MenuPacientePage } from '../pages/Paciente/menu-paciente/menu-paciente'
 export class MyApp {
   rootPage:any = LoginPage;
   
-
   constructor(
     platform: Platform, 
     statusBar: StatusBar,
@@ -41,15 +41,13 @@ export class MyApp {
             paciente_data => {
               const paciente_dados = (paciente_data as any);
               userDataProvider.setUserData(true, paciente_dados.Dados);
-              console.log(paciente_dados);
-              this.rootPage = MenuPacientePage;
+              this.rootPage = SidePage;
             }
           );
         } else {
-          console.log("Nutri");
+          this.rootPage = SidePage;
         }
       }
-
       statusBar.styleDefault();
       splashScreen.hide();
     });
