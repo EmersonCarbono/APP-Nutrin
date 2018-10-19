@@ -5,8 +5,8 @@
       <p>
           {{user_nome_provaider}}
       </p>
-      <button ion-button outline color="secondary" (click)="pushPage('PerfilPage')">Perfil</button>
-      <button ion-button outline color="danger" (click)="logout()">Sair</button>
+      <button ion-button color="secondary" (click)="pushPage('PerfilPage')">Perfil</button>
+      <button ion-button color="danger" (click)="logout()">Sair</button>
     </div>
 
     <ion-list>
@@ -20,11 +20,6 @@
           <ion-icon class="icon-menu" name="calendar"></ion-icon> Consultas
         </p>
       </ion-item>
-      <ion-item class="item-dark" (click)="modalSolicitarConsulta()">
-        <p>
-          <ion-icon class="icon-menu" name="create"></ion-icon> Solicitar Consulta
-        </p>
-      </ion-item>
     </ion-list>
   </ion-content>
 
@@ -32,8 +27,8 @@
     <div class="pre-perfil">
       <img src="../../../assets/imgs/fotoPerfil.jpg" alt="Foto Perfil" />
       <p>{{user_nome_provaider}}</p>
-      <button ion-button outline color="secondary" (click)="pushPage('PerfilPage')">Perfil</button>
-      <button ion-button outline color="danger" (click)="logout()">Sair</button>
+      <button ion-button  color="secondary" (click)="pushPage('PerfilPage')">Perfil</button>
+      <button ion-button  color="danger" (click)="logout()">Sair</button>
     </div>
 
     <ion-list>
