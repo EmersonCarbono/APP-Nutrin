@@ -1,4 +1,4 @@
-page-alterar-cadastro {
+page-modal-solicitar-consulta {
     .toolbar-title-md { /* titulo header */
         color: #fff;
     }
@@ -23,22 +23,5 @@ page-alterar-cadastro {
         .icon {
             color: #fff;
         }
-    }
-
-    .item{
-        background-color: #e4e4e4;
-    }
-
-    .item-campo .ng-invalid .ng-touched:not(form){
-        border-bottom: 1px solid red;
-    }
-
-    .item-label{
-        font-weight: bold;
-        margin: 2px 0;
-    }
-
-    .btn{
-        background-color: #18c00c
     }
 }

@@ -1,0 +1,50 @@
+page-side {
+    p {
+        color: #000;
+    }
+
+    .scroll-content {
+        background-color: #e4e4e4;
+    }
+
+    .pre-perfil {
+        margin: 25px;
+        text-align: center;
+
+        img {
+            width: 130px;
+            border: 3px solid #18c00c;
+            border-radius: 50% 0%;
+        }
+
+        p {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 5px 0;
+        }
+    }
+
+    .item-light {
+        background-color: #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+    }
+
+    .item-dark {
+        background-color: #d1d1d1;
+        border-bottom: 1px solid #e4e4e4;
+    }
+
+    .item p {
+        color: #000;    
+    }
+
+    .list .item-block .item-inner {
+        border-bottom: none;
+    }
+
+    .icon-menu {
+        margin-right: 10px;
+        font-size: 20px;
+        vertical-align: -2px;
+    }
+}

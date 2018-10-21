@@ -1,0 +1,59 @@
+<ion-menu [content]="content" id="menu-paciente">
+  <ion-content *ngIf="user_tipo_provaider == 'P'">
+    <div class="pre-perfil">
+      <img src="../../../assets/imgs/fotoPerfil.jpg" alt="Foto Perfil" />
+      <p>
+          {{user_nome_provaider}}
+      </p>
+      <button ion-button color="secondary" (click)="pushPage('PerfilPage')">Perfil</button>
+      <button ion-button color="danger" (click)="logout()">Sair</button>
+    </div>
+
+    <ion-list>
+      <ion-item class="item-dark" (click)="pushPage('HomePacientePage')">
+        <p>
+          <ion-icon class="icon-menu" name="home"></ion-icon> Home
+        </p>
+      </ion-item>
+      <ion-item class="item-light" (click)="pushPage('ListarConsultasPage')">
+        <p>
+          <ion-icon class="icon-menu" name="calendar"></ion-icon> Consultas
+        </p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+  <ion-content *ngIf="user_tipo_provaider != 'P'">
+    <div class="pre-perfil">
+      <img src="../../../assets/imgs/fotoPerfil.jpg" alt="Foto Perfil" />
+      <p>{{user_nome_provaider}}</p>
+      <button ion-button  color="secondary" (click)="pushPage('PerfilPage')">Perfil</button>
+      <button ion-button  color="danger" (click)="logout()">Sair</button>
+    </div>
+
+    <ion-list>
+      <ion-item class="item-dark" (click)="pushPage('HomeNutricionistaPage')">
+        <p>
+          <ion-icon class="icon-menu" name="home"></ion-icon> Home
+        </p>
+      </ion-item>
+      <ion-item class="item-light" (click)="pushPage('AgendarConsultaPage')">
+        <p>
+          <ion-icon class="icon-menu" name="calendar"></ion-icon> Agendar Consulta
+        </p>
+      </ion-item>
+      <ion-item class="item-dark" (click)="pushPage('ConsultasNutricionistaPage')">
+        <p>
+          <ion-icon class="icon-menu" name="calendar"></ion-icon> Consultas
+        </p>
+      </ion-item>
+      <ion-item class="item-light" (click)="pushPage('ConsultasSolicitadasPage')">
+        <p>
+          <ion-icon class="icon-menu" name="calendar"></ion-icon> Consultas Solicitadas
+        </p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content swipeBackEnable="false" [root]="rootPage"></ion-nav>

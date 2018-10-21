@@ -28,12 +28,19 @@ export class PerfilPage {
   }
 
   dados_cadastro_user = this.userDataProvider.getUserData().dados_user;
+  sexo_user = "";
+
 
   public pushAlterarCadastro(){
     this.navCtrl.push(AlterarCadastroPage);
   }
 
   ionViewDidLoad() {
+    if (this.dados_cadastro_user.sexo == "M") {
+      this.sexo_user = "Masculino";
+    } else {
+      this.sexo_user = "Feminino";
+    }
   }
 
 

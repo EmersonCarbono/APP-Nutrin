@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the SolicitarConsultaPage page.
+ * Generated class for the AgendarConsultaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-solicitar-consulta',
-  templateUrl: 'solicitar-consulta.html',
+  selector: 'page-agendar-consulta',
+  templateUrl: 'agendar-consulta.html',
 })
-export class SolicitarConsultaPage {
+export class AgendarConsultaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SolicitarConsultaPage');
+    console.log('ionViewDidLoad AgendarConsultaPage');
   }
 
 }

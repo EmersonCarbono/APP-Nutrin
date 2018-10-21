@@ -1,4 +1,4 @@
-page-alterar-cadastro {
+page-listar-consultas {
     .toolbar-title-md { /* titulo header */
         color: #fff;
     }
@@ -25,20 +25,11 @@ page-alterar-cadastro {
         }
     }
 
-    .item{
-        background-color: #e4e4e4;
-    }
-
-    .item-campo .ng-invalid .ng-touched:not(form){
-        border-bottom: 1px solid red;
-    }
-
-    .item-label{
-        font-weight: bold;
-        margin: 2px 0;
-    }
-
-    .btn{
-        background-color: #18c00c
+    .agenda-consulta {
+        ion-note {
+            margin-right: 20px;
+            margin-left: 5px;
+            vertical-align: 2px;
+        }
     }
 }

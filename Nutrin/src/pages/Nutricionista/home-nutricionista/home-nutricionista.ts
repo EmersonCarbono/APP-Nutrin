@@ -3,16 +3,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-agenda',
-  templateUrl: 'agenda.html',
+  selector: 'page-home-nutricionista',
+  templateUrl: 'home-nutricionista.html',
 })
-export class AgendaPage {
+export class HomeNutricionistaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AgendaPage');
+    console.log('ionViewDidLoad HomeNutricionistaPage');
   }
 
 }

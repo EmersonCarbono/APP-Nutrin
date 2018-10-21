@@ -1,0 +1,47 @@
+page-consultas-solicitadas {
+    .toolbar-title-md { /* titulo header */
+        color: #fff;
+    }
+    
+    .toolbar-background { /* background header */
+        background-color: map-get($colors, secondary);
+    }
+
+    .scroll-content { /* background content */
+        background-color: map-get($colors, background);
+    }
+
+    .toolbar {
+        .item {
+            background-color: transparent;
+        }
+
+        .item-block .item-inner {
+            border-bottom: none;
+        }
+
+        .icon {
+            color: #fff;
+        }
+    }
+
+    ion-card-content {
+        margin-top: 20px;
+
+        .title {
+            font-weight: bolder;
+        }
+
+        .info-consulta {
+            margin-top: 10px;
+
+            ion-icon {
+                margin-right: 5px;
+                vertical-align: -1px;
+            }
+            span {
+                margin-right: 10px;
+            }
+        }
+    }
+}

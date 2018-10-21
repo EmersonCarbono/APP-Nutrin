@@ -9,12 +9,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // importando as paginas
 import { LoginPageModule } from '../pages/login/login.module';
 import { HomePacientePageModule } from '../pages/Paciente/home-paciente/home-paciente.module';
+import { HomeNutricionistaPageModule } from '../pages/Nutricionista/home-nutricionista/home-nutricionista.module';
+import { SidePageModule } from '../pages/side/side.module';
 
 //importando modulo http
 import { HttpModule } from "@angular/http";
 import { HttpClientModule } from '@angular/common/http';
-import { MenuPacientePageModule } from '../pages/Paciente/menu-paciente/menu-paciente.module';
-
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import { MenuPacientePageModule } from '../pages/Paciente/menu-paciente/menu-pac
     IonicModule.forRoot(MyApp),
     LoginPageModule,
     HomePacientePageModule,
-    MenuPacientePageModule,
+    HomeNutricionistaPageModule,
+    SidePageModule,
     HttpClientModule,
     HttpModule,
   ],

@@ -2,15 +2,19 @@ import { Component } from '@angular/core';
 
 // importando os validators e form builder
 import { Validators, FormBuilder } from '@angular/forms';
+import { ToastController} from 'ionic-angular';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginProvider } from '../../providers/Login/login';
+import { LoginProvider } from '../../providers/login/login';
 import { UserDataProvider } from '../../providers/UserData/userData';
 import { UserProvider } from '../../providers/User/user';
 
+import { SidePage } from '../side/side';
 
-import { HomePacientePage } from '../Paciente/home-paciente/home-paciente';
+
 import { PacienteProvider } from '../../providers/pacientes/paciente';
+
+
 
 
 @IonicPage()
@@ -36,6 +40,7 @@ export class LoginPage {
     private userProvider: UserProvider,
     private pacienteProvider: PacienteProvider,
     private userDataProvider: UserDataProvider,
+    public toastCtrl: ToastController,
   ) {
 
     this.dados_login = this.FormBuilder.group({
@@ -44,6 +49,24 @@ export class LoginPage {
     })
 
   }
+
+  private toastLoginInvalido(){
+    const toast = this.toastCtrl.create({
+      message: "Usuário ou senha inválidos",
+      duration : 3000,
+      showCloseButton: true,
+      closeButtonText: "OK",
+      position: "bottom",
+    });
+    toast.present();
+  }
+
+  public getTipoUser(){
+
+  }
+
+
+
 
   public Login(){
     var temp_username = this.dados_login.value.username;
@@ -61,17 +84,19 @@ export class LoginPage {
                   paciente_data => {
                     const paciente_dados = (paciente_data as any);
                     this.userDataProvider.setUserData(true, paciente_dados.Dados);
-                    console.log(paciente_dados)
                   }
                 );
-                this.navCtrl.setRoot(HomePacientePage);
               } else {
-                console.log("Nutri");
+                this.userDataProvider.setUserData(true, user_data_response.Dados);
               }
+              this.navCtrl.setRoot(SidePage, {
+                tipo_user : user_data_response.Dados.tipo,
+                nome_user: user_data_response.Dados.nome
+              });
             }
           );
         } else {
-          console.log("Erro no login");
+          this.toastLoginInvalido();
         }
       }, error=>{
         console.log(error);

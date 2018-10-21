@@ -1,14 +1,14 @@
-page-alterar-cadastro {
+page-agendar-consulta {
     .toolbar-title-md { /* titulo header */
         color: #fff;
     }
     
     .toolbar-background { /* background header */
-        background-color: #18c00c;
+        background-color: map-get($colors, secondary);
     }
 
     .scroll-content { /* background content */
-        background-color: #e4e4e4;
+        background-color: map-get($colors, background);
     }
 
     .toolbar {

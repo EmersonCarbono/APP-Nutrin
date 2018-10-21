@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
-import { HomePacientePage } from './home-paciente';
-import { PerfilPageModule } from '../cadastro/perfil.module';
+import { ListarConsultasPage } from './listar-consultas';
 import { ModalSolicitarConsultaPageModule } from '../modal-solicitar-consulta/modal-solicitar-consulta.module';
 
 @NgModule({
   declarations: [
-    HomePacientePage,
+    ListarConsultasPage
   ],
   imports: [
-    IonicPageModule.forChild(HomePacientePage),
-    PerfilPageModule,
+    IonicPageModule.forChild(ListarConsultasPage),
     ModalSolicitarConsultaPageModule
   ],
 })
-export class HomePacientePageModule {}
+export class ListarConsultasPageModule {}
