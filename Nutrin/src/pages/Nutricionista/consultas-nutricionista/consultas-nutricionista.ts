@@ -72,6 +72,10 @@ export class ConsultasNutricionistaPage {
     acoes.present();
   }
 
+  pushPage(pagina: string) {
+    this.navCtrl.push(pagina);
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConsultasNutricionistaPage');
   }
