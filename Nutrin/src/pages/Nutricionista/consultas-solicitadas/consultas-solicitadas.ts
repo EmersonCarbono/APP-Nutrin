@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams, ActionSheetController } from 'ioni
 
 @IonicPage()
 @Component({
-  selector: 'page-consultas-nutricionista',
-  templateUrl: 'consultas-nutricionista.html',
+  selector: 'page-consultas-solicitadas',
+  templateUrl: 'consultas-solicitadas.html',
 })
-export class ConsultasNutricionistaPage {
+export class ConsultasSolicitadasPage {
 
   constructor(
     public navCtrl: NavController,
@@ -14,37 +14,13 @@ export class ConsultasNutricionistaPage {
     public actionsheetCtrl: ActionSheetController
   ) {}
 
-  filtroSelect() {
-    let filtro = this.actionsheetCtrl.create({
-      title: 'Filtrar por',
-      cssClass: 'action-sheets-basic-page',
-      buttons: [
-        {
-          text: 'Consultas do dia',
-          role: 'destructive',
-          handler: () => {
-            console.log("Consultas do dia");
-          }
-        },
-        {
-          text: 'Confirmados',
-          role: 'destructive',
-          handler: () => {
-            console.log("Confirmados");
-          }
-        }
-      ]
-    });
-    filtro.present();
-  }
-
   acoesSelect() {
     let acoes = this.actionsheetCtrl.create({
       title: 'Ações',
       cssClass: 'action-sheets-basic-page',
       buttons: [
         {
-          text: 'Realizado',
+          text: 'Confirmar',
           role: 'destructive',
           icon: 'checkmark',
           handler: () => {
@@ -73,7 +49,7 @@ export class ConsultasNutricionistaPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ConsultasNutricionistaPage');
+    console.log('ionViewDidLoad ConsultasSolicitadasPage');
   }
 
 }
