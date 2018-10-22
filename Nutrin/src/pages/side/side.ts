@@ -51,7 +51,7 @@ export class SidePage {
 
   ionViewDidLoad(){
     console.log(this.user_tipo_provaider);
-    this.setRootPage(this.user_tipo);
+    this.setRootPage(this.user_tipo_provaider);
   };
 
 }

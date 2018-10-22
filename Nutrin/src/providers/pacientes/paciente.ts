@@ -14,6 +14,10 @@ export class PacienteProvider {
     return this.http.get(this.base_path + "/paciente/consultar/" + username)
   }
 
+  public listar_pacientes(){
+    return this.http.get(this.base_path + "/pacientes");
+  }
+
   public alterar_paciente(username_atual,nome,username,dataNascimento,sexo,email,celular,cidade,profissao,tipo,objetivo,altura){
     var dados_paciente: any = {
       "username_atual": username_atual,
