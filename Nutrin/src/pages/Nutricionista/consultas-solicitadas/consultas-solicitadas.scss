@@ -1,29 +1,5 @@
 page-consultas-solicitadas {
-    .toolbar-title-md { /* titulo header */
-        color: #fff;
-    }
-    
-    .toolbar-background { /* background header */
-        background-color: map-get($colors, secondary);
-    }
-
-    .scroll-content { /* background content */
-        background-color: map-get($colors, background);
-    }
-
-    .toolbar {
-        .item {
-            background-color: transparent;
-        }
-
-        .item-block .item-inner {
-            border-bottom: none;
-        }
-
-        .icon {
-            color: #fff;
-        }
-    }
+    @import "../../../theme/theme.scss";
 
     ion-card-content {
         margin-top: 20px;
