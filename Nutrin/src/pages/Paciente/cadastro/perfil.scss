@@ -1,29 +1,5 @@
 page-perfil {
-    .toolbar-title-md { /* titulo header */
-        color: #fff;
-    }
-    
-    .toolbar-background { /* background header */
-        background-color: #18c00c;
-    }
-
-    .scroll-content { /* background content */
-        background-color: #e4e4e4;
-    }
-
-    .toolbar {
-        .item {
-            background-color: transparent;
-        }
-
-        .item-block .item-inner {
-            border-bottom: none;
-        }
-
-        .icon {
-            color: #fff;
-        }
-    }
+    @import "./theme/theme.scss";
     
     .pre-perfil {
         margin: 25px;
@@ -31,7 +7,7 @@ page-perfil {
 
         img {
             width: 130px;
-            border: 3px solid #18c00c;
+            border: 3px solid map-get($colors, primary);
             border-radius: 50% 0%;
         }
 
@@ -55,12 +31,12 @@ page-perfil {
     }
 
     .btn{
-        background-color: #18c00c;
+        background-color: map-get($colors, primary);
     }
 
     .item_perfil{
         font-size: 1em;
-        background-color: #e4e4e4;
+        background-color: map-get($colors, background);
     }
 
     .label_item{
@@ -69,11 +45,11 @@ page-perfil {
     }
 
     .item{
-        background-color: #e4e4e4;
+        background-color: map-get($colors, background);
     }
 
     .list{
-        background-color: #e4e4e4;
+        background-color: map-get($colors, background);
     }
 }
 
