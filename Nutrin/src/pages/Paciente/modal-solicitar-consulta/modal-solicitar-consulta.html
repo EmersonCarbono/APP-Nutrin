@@ -12,21 +12,21 @@
 
 <ion-content padding>
 
-  <ion-list>
-    <ion-item>
-      <ion-label>Data</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY" pickerFormart="DD/MM/YYYY"></ion-datetime>
-    </ion-item>
-    <ion-item>
-        <ion-label>Horario</ion-label>
-        <ion-datetime displayFormat="h:mm" pickerFormat="h mm"></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Breve Descrição</ion-label>
-      <ion-textarea></ion-textarea>
-    </ion-item>
-  </ion-list>
+    <form [formGroup]="form_solicitar">
+      <ion-item>
+        <ion-label>Data</ion-label>
+        <ion-datetime formControlName="data" displayFormat="DD/MM/YYYY" pickerFormart="DD/MM/YYYY"></ion-datetime>
+      </ion-item>
+      <ion-item>
+          <ion-label>Horario</ion-label>
+          <ion-datetime formControlName="horario" displayFormat="h:mm" pickerFormat="h mm"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Breve Descrição</ion-label>
+        <ion-textarea formControlName="descricao"></ion-textarea>
+      </ion-item>
 
-  <button ion-button round full color="primary">Enviar</button>
+      <button [disabled]="form_solicitar.invalid" ion-button round full color="primary">Enviar</button>
+  </form>
 
 </ion-content>
