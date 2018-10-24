@@ -10,6 +10,10 @@ export class PacienteProvider {
  
   }
 
+  public cadastrar_paciente(dados_cadastro: any){
+    return this.http.post(this.base_path + "/paciente/cadastrar", dados_cadastro);
+  }
+
   public pesquisar_paciente(username){
     return this.http.get(this.base_path + "/paciente/consultar/" + username)
   }

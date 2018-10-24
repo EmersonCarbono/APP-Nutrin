@@ -92,7 +92,6 @@ export class AlterarCadastroPage {
     var cidade =   this.dados_alterar_cadastro.value.cidade;
     var profissao =   this.dados_alterar_cadastro.value.profissao;
     var altura =   this.dados_alterar_cadastro.value.altura;
-    console.log(dataNascimento);
     this.pacienteProvider.alterar_paciente(
       username_atual,
       nome,

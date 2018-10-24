@@ -15,12 +15,15 @@
           <img src="../../../assets/imgs/fotoPerfil.jpg" alt="Foto Perfil" />
         </ion-avatar>
         <h2>{{ paciente.nome }}</h2>
-        <ion-icon name="more" item-end></ion-icon>
+        <ion-icon name="more" (click)="openMenu()" item-end></ion-icon>
       </ion-item>
     </ion-card-header>
     <ion-card-content>
-      <p>{{ paciente.email }}</p>
-      <p>{{ paciente.celular }}</p>
+      <p><ion-icon name="mail"></ion-icon> {{ paciente.email }}</p>
+      <p><ion-icon name="call"></ion-icon> {{ paciente.celular }}</p>
     </ion-card-content>
   </ion-card>
+  <ion-fab bottom right>
+    <button ion-fab (click)="pushPage('CadastrarPage')"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>

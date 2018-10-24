@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PacienteProvider } from '../../../providers/pacientes/paciente';
-
+import { ActionSheetController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -17,8 +16,35 @@ export class PacientesPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public pacienteProvaider: PacienteProvider
+    public pacienteProvaider: PacienteProvider,
+    public actionSheetCtrl: ActionSheetController,
   ) {
+  }
+
+  public pushPage(page: any){
+    this.navCtrl.push(page);
+  }
+
+  public openMenu(){
+    const actionSheet = this.actionSheetCtrl.create({
+      title: "",
+      buttons:[
+        {
+          text: "Editar",
+          handler: () => {
+            console.log("editar");
+          }
+        },
+        {
+          text: "Excluir",
+          role: "destructive",
+          handler: () => {
+            console.log("Excluir");
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
   private iniciaizarPacientes() {
