@@ -8,6 +8,6 @@ import { ModalSolicitarConsultaPage } from './modal-solicitar-consulta';
   ],
   imports: [
     IonicPageModule.forChild(ModalSolicitarConsultaPage),
-  ],
+  ]
 })
 export class ModalSolicitarConsultaPageModule {}

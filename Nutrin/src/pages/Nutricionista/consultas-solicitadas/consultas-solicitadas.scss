@@ -1,0 +1,23 @@
+page-consultas-solicitadas {
+    @import "../../../theme/theme.scss";
+
+    ion-card-content {
+        margin-top: 20px;
+
+        .title {
+            font-weight: bolder;
+        }
+
+        .info-consulta {
+            margin-top: 10px;
+
+            ion-icon {
+                margin-right: 5px;
+                vertical-align: -1px;
+            }
+            span {
+                margin-right: 10px;
+            }
+        }
+    }
+}
