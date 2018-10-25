@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+      <button ion-button [menuToggle]="activeMenu">
+          <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+              {{paciente.nome}}
+      </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="pre-perfil">
+      <img src="../../../assets/imgs/fotoPerfil.jpg" alt="Foto Perfil" />
+      <p>{{paciente.nome}}</p>
+  </div>
+
+  <ion-list class="list">
+      <ion-item class="item">
+          <p class="item_perfil"><span class="label_item">Usuario:</span> {{paciente.username}}</p>
+      </ion-item>
+      <ion-item class="item">
+          <p class="item_perfil"><span class="label_item">E-mail:</span> {{paciente.email}}</p>
+      </ion-item>
+      <ion-item class="item">
+          <p class="item_perfil"><span class="label_item">Data de Nascimento:</span>
+              {{paciente.dataNascimento}}</p>
+      </ion-item>
+      <ion-item class="item">
+          <p class="item_perfil"><span class="label_item">Sexo:</span> {{sexo_user}}</p>
+      </ion-item>
+      <ion-item class="item">
+          <p class="item_perfil"><span class="label_item">Altura:</span> {{paciente.altura}}</p>
+      </ion-item>
+      <ion-item class="item">
+          <p class="item_perfil"><span class="label_item">Celular:</span> {{paciente.celular}}</p>
+      </ion-item>
+      <ion-item class="item">
+          <p class="item_perfil"><span class="label_item">Cidade:</span> {{paciente.cidade}}</p>
+      </ion-item>
+      <ion-item class="item">
+          <p class="item_perfil"><span class="label_item">Profissão:</span> {{paciente.profissao}}</p>
+      </ion-item>
+      <ion-item class="item">
+          <p class="item_perfil"><span class="label_item">Objetivo:</span> {{paciente.objetivo}}</p>
+      </ion-item>
+  </ion-list>
+</ion-content>

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PacienteProvider } from '../../../providers/pacientes/paciente';
 import { ActionSheetController } from 'ionic-angular';
+import { AlterarPacientePage } from '../alterar-paciente/alterar-paciente';
+import { PerfilPacientePage } from '../perfil-paciente/perfil-paciente';
 
 @IonicPage()
 @Component({
@@ -25,14 +27,14 @@ export class PacientesPage {
     this.navCtrl.push(page);
   }
 
-  public openMenu(){
+  public openMenu(paciente){
     const actionSheet = this.actionSheetCtrl.create({
       title: "",
       buttons:[
         {
           text: "Editar",
           handler: () => {
-            console.log("editar");
+            this.navCtrl.push(AlterarPacientePage, { nome_paciente : paciente });
           }
         },
         {
@@ -40,6 +42,12 @@ export class PacientesPage {
           role: "destructive",
           handler: () => {
             console.log("Excluir");
+          }
+        },
+        {
+          text: "Informações",
+          handler: () => {
+            this.navCtrl.push(PerfilPacientePage, { nome_paciente : paciente });
           }
         }
       ]
