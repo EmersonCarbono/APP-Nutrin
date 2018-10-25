@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AgendarConsultaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -15,7 +9,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AgendarConsultaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  agendar_consulta:any = {}
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public formBuilder: FormBuilder
+  ) {
+
+    this.agendar_consulta = this.formBuilder.group({
+      nome: new FormControl('', Validators.required),
+      tipoConsulta: new FormControl('', Validators.required),
+      horario: new FormControl('', Validators.required),
+      tipoEstado: new FormControl('', Validators.required),
+      dieta: new FormControl('', Validators.required)
+    });
   }
 
   ionViewDidLoad() {
