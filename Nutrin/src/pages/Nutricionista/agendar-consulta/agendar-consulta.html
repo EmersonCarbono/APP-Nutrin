@@ -10,17 +10,16 @@
 <ion-content padding>
   <main class="formulario">
 
-    <form action="AgendarConsulta" method="POST" id="AgendarConsulta">
-      <ion-list>
+    <form [formGroup]="agendar_consulta" method="POST">
   
         <ion-item class="item">
           <ion-label floating class="item-label">Nome</ion-label>
-          <ion-input type="text" name="nome" id="nome" class="item-campo"></ion-input>
+          <ion-input type="text" name="nome" id="nome" formControlName="nome" class="item-campo"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label>Tipo de Consulta</ion-label>
-          <ion-select>
+          <ion-select formControlName="tipoConsulta">
             <ion-option value="1">Tipo 1</ion-option>
             <ion-option value="2">Tipo 2</ion-option>
             <ion-option value="3">Tipo 3</ion-option>
@@ -29,21 +28,12 @@
 
         <ion-item>
           <ion-label>Horario</ion-label>
-          <ion-datetime displayFormat="h:mm" pickerFormat="h mm"></ion-datetime>
+          <ion-datetime displayFormat="h:mm" pickerFormat="h mm" formControlName="horario"></ion-datetime>
         </ion-item>
 
         <ion-item>
           <ion-label>Tipo Estado</ion-label>
-          <ion-select>
-            <ion-option value="1">Tipo 1</ion-option>
-            <ion-option value="2">Tipo 2</ion-option>
-            <ion-option value="3">Tipo 3</ion-option>
-          </ion-select>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Antropometria</ion-label>
-          <ion-select>
+          <ion-select formControlName="tipoEstado">
             <ion-option value="1">Tipo 1</ion-option>
             <ion-option value="2">Tipo 2</ion-option>
             <ion-option value="3">Tipo 3</ion-option>
@@ -52,22 +42,11 @@
 
         <ion-item class="item">
           <ion-label floating class="item-label">Dieta</ion-label>
-          <ion-input type="text" name="dieta" id="dieta" class="item-campo"></ion-input>
+          <ion-input type="text" name="dieta" id="dieta" class="item-campo" formControlName="dieta"></ion-input>
         </ion-item>
-
-        <ion-item>
-          <ion-label>Pagamento</ion-label>
-          <ion-select>
-            <ion-option value="1">Tipo 1</ion-option>
-            <ion-option value="2">Tipo 2</ion-option>
-            <ion-option value="3">Tipo 3</ion-option>
-          </ion-select>
-        </ion-item>
-  
-      </ion-list>
   
       <div class="btn-container">
-        <button ion-button full block class="btn">Agendar</button>
+        <button [disabled]="agendar_consulta.invalid" ion-button full block class="btn">Agendar</button>
       </div>
 
     </form>
