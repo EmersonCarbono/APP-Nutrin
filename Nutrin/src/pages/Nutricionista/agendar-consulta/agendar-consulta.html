@@ -10,9 +10,9 @@
 <ion-content padding>
   <main class="formulario">
 
-    <form [formGroup]="agendar_consulta" method="POST">
+    <form [formGroup]="agendar_consulta" method="POST" class="formController">
   
-        <ion-item class="item">
+        <ion-item>
           <ion-label floating class="item-label">Nome</ion-label>
           <ion-input type="text" name="nome" id="nome" formControlName="nome" class="item-campo"></ion-input>
         </ion-item>
@@ -40,12 +40,12 @@
           </ion-select>
         </ion-item>
 
-        <ion-item class="item">
+        <ion-item>
           <ion-label floating class="item-label">Dieta</ion-label>
           <ion-input type="text" name="dieta" id="dieta" class="item-campo" formControlName="dieta"></ion-input>
         </ion-item>
   
-      <div class="btn-container">
+      <div class>
         <button [disabled]="agendar_consulta.invalid" ion-button full block class="btn">Agendar</button>
       </div>
 

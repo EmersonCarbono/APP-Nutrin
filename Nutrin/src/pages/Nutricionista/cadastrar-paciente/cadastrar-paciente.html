@@ -9,31 +9,30 @@
 
 <ion-content padding>
   <main class="formulario">
-    <form [formGroup]="cadastro" method="POST" id="cadastrar">
-      <ion-list>
+    <form [formGroup]="cadastro" method="POST" id="cadastrar" class="formController">
   
-        <ion-item class="item">
-          <ion-label floating class="item-label">Nome</ion-label>
-          <ion-input type="text" name="nome" id="nome" formControlName="nome" class="item-campo"></ion-input>
-        </ion-item>
-  
-        <ion-item class="item">
-          <ion-label floating class="item-label">Usuario</ion-label>
-          <ion-input type="text" name="username" id="username" formControlName="username" class="item-campo"></ion-input>
+        <ion-item>
+          <ion-label floating>Nome</ion-label>
+          <ion-input type="text" name="nome" id="nome" formControlName="nome" ></ion-input>
         </ion-item>
   
         <ion-item>
-          <ion-label floating class="item-label">Data de Nascimento</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate" type="date" name="dataNascimento" id="dataNascimento" formControlName="dataNascimento" class="item-campo"></ion-datetime>
+          <ion-label floating>Usuario</ion-label>
+          <ion-input type="text" name="username" id="username" formControlName="username" ></ion-input>
         </ion-item>
   
-        <ion-item class="item">
-          <ion-label floating class="item-label">E-mail</ion-label>
-          <ion-input type="email" name="email" id="email" formControlName="email" class="item-campo"></ion-input>
+        <ion-item>
+          <ion-label floating>Data de Nascimento</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate" type="date" name="dataNascimento" id="dataNascimento" formControlName="dataNascimento" ></ion-datetime>
         </ion-item>
   
-        <ion-list class="item" formControlName="sexo" radio-group>
-          <ion-list-header class="item-label">Sexo</ion-list-header>
+        <ion-item>
+          <ion-label floating>E-mail</ion-label>
+          <ion-input type="email" name="email" id="email" formControlName="email" ></ion-input>
+        </ion-item>
+  
+        <ion-list formControlName="sexo" radio-group>
+          <ion-list-header>Sexo</ion-list-header>
           <ion-item>
             <ion-label>Masculino</ion-label>
             <ion-radio checked="false" name="sexo" id="sexo s_m" value="M"></ion-radio>
@@ -44,29 +43,27 @@
           </ion-item>
         </ion-list>
   
-        <ion-item class="item">
-          <ion-label floating class="item-label">Altura</ion-label>
-          <ion-input type="number" name="altura" id="altura" formControlName="altura" class="item-campo"></ion-input>
-        </ion-item>
-  
-        <ion-item class="item">
-          <ion-label floating class="item-label">Celular</ion-label>
-          <ion-input type="number" name="celular" id="celular" formControlName="celular" class="item-campo"></ion-input>
+        <ion-item>
+          <ion-label floating>Altura</ion-label>
+          <ion-input type="number" name="altura" id="altura" formControlName="altura" ></ion-input>
         </ion-item>
   
         <ion-item>
-          <ion-label floating class="item-label">Cidade</ion-label>
-          <ion-input type="text" name="cidade" id="cidade" formControlName="cidade" class="item-campo"></ion-input>
+          <ion-label floating>Celular</ion-label>
+          <ion-input type="number" name="celular" id="celular" formControlName="celular" ></ion-input>
         </ion-item>
   
         <ion-item>
-          <ion-label floating class="item-label">Profissão</ion-label>
-          <ion-input type="text" name="profissao" id="profissao" formControlName="profissao" class="item-campo"></ion-input>
+          <ion-label floating>Cidade</ion-label>
+          <ion-input type="text" name="cidade" id="cidade" formControlName="cidade" ></ion-input>
         </ion-item>
   
-      </ion-list>
+        <ion-item>
+          <ion-label floating>Profissão</ion-label>
+          <ion-input type="text" name="profissao" id="profissao" formControlName="profissao" ></ion-input>
+        </ion-item>
   
-      <div class="btn-container">
+      <div>
         <button [disabled]="cadastro.invalid" ion-button full block class="btn">Salvar</button>
       </div>
     </form>
