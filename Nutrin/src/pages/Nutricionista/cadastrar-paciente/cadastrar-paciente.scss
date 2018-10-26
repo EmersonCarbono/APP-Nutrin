@@ -1,20 +1,4 @@
 page-cadastrar-paciente {
     @import "../../../theme/theme.scss";
-
-    .item{
-        background-color: map-get($colors, background);
-    }
-
-    .item-campo .ng-invalid .ng-touched:not(form){
-        border-bottom: 1px solid red;
-    }
-
-    .item-label{
-        font-weight: bold;
-        margin: 2px 0;
-    }
-
-    .btn{
-        background-color: map-get($colors, primary);
-    }
+    @import "./theme/form.scss";
 }
