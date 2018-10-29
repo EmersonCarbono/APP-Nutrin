@@ -15,7 +15,7 @@
           <img src="../../../assets/imgs/fotoPerfil.jpg" alt="Foto Perfil" />
         </ion-avatar>
         <h2>{{ paciente.nome }}</h2>
-        <ion-icon name="more" (click)="openMenu('ozobe')" item-end></ion-icon>
+        <ion-icon name="more" (click)="openMenu([paciente.username])" item-end></ion-icon>
       </ion-item>
     </ion-card-header>
     <ion-card-content>
