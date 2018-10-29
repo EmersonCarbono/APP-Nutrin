@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { ConsultasProvider } from '../../../providers/consultas/consultas';
 
 @IonicPage()
 @Component({
@@ -8,10 +9,13 @@ import { IonicPage, NavController, NavParams, ActionSheetController } from 'ioni
 })
 export class ConsultasNutricionistaPage {
 
+  consultas:any = new Array<any>();
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public actionsheetCtrl: ActionSheetController
+    public actionsheetCtrl: ActionSheetController,
+    public consultasProvider: ConsultasProvider
   ) {}
 
   filtroSelect() {
@@ -77,6 +81,9 @@ export class ConsultasNutricionistaPage {
   }
 
   ionViewDidLoad() {
+    this.consultasProvider.listar_all_consultas().subscribe(
+      (dados) => { this.consultas = dados["Dados"]; console.log(this.consultas); }
+    );
     console.log('ionViewDidLoad ConsultasNutricionistaPage');
   }
 

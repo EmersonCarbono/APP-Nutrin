@@ -15,6 +15,7 @@ import { SidePageModule } from '../pages/side/side.module';
 //importando modulo http
 import { HttpModule } from "@angular/http";
 import { HttpClientModule } from '@angular/common/http';
+import { ConsultasProvider } from '../providers/consultas/consultas';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ConsultasProvider
   ]
 })
 export class AppModule {}

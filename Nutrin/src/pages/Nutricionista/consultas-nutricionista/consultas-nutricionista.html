@@ -9,21 +9,21 @@
 
 <ion-content padding>
 
-  <ion-card>
+  <ion-card *ngFor="let consulta of consultas">
 
     <ion-item item-start>
       <ion-avatar item-start>
         <img src="../../../assets/imgs/fotoPerfil.jpg" />
       </ion-avatar>
-      <h2>Victor Codonho</h2>
-      <ion-badge color="primary">Confirmado</ion-badge>
+      <h2>{{ consulta.paciente_id }}</h2>
+      <ion-badge color="primary">{{ consulta.tipoEstado_id }}</ion-badge>
 
       <ion-icon name="more" color="primary" item-end (click)="acoesSelect()">
       </ion-icon>
     </ion-item>
 
     <ion-card-content>
-      <h1 class="title">Titulo da Consulta</h1>
+      <h1 class="title">{{ consulta.tipoAtendimento_id }}</h1>
       
       <ion-row class="info-consulta">
 
@@ -32,7 +32,7 @@
         </ion-col>
 
         <ion-col>
-        <ion-icon name="clock"></ion-icon><span>19:30 ás 20:30</span>
+        <ion-icon name="clock"></ion-icon><span>{{ consulta.horario_id }}</span>
         </ion-col>
       </ion-row>
 
