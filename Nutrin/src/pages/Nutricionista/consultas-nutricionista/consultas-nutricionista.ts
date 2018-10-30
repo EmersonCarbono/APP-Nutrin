@@ -24,10 +24,10 @@ export class ConsultasNutricionistaPage {
       cssClass: 'action-sheets-basic-page',
       buttons: [
         {
-          text: 'Consultas do dia',
+          text: 'Consultas Solicitadas',
           role: 'destructive',
           handler: () => {
-            console.log("Consultas do dia");
+            this.navCtrl.push("ConsultasSolicitadasPage");
           }
         },
         {
