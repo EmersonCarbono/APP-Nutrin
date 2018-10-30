@@ -10,7 +10,7 @@
 <ion-content padding>
 
   <ion-card *ngFor="let consulta of consultas">
-    <div *ngIf="consulta.tipoEstado_id != 'SOLICITADO'">
+    <div *ngIf="consulta.tipoEstado_id == 'CONFIRMADO'">
     <ion-item item-start>
       <ion-avatar item-start>
         <img src="../../../assets/imgs/fotoPerfil.jpg" />
