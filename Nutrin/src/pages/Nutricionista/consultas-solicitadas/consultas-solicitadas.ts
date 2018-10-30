@@ -53,7 +53,7 @@ export class ConsultasSolicitadasPage {
   }
 
   getListarConsultas() {
-    this.consultasProvider.listar_all_consultas().subscribe(
+    this.consultasProvider.consultasRead().subscribe(
       (dados) => { this.consultas = dados["Dados"];}
     );
     return this.consultas;

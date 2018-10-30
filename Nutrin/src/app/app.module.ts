@@ -16,6 +16,9 @@ import { SidePageModule } from '../pages/side/side.module';
 import { HttpModule } from "@angular/http";
 import { HttpClientModule } from '@angular/common/http';
 import { ConsultasProvider } from '../providers/consultas/consultas';
+import { TipoEstadoProvider } from '../providers/tipo-estado/tipo-estado';
+import { TipoAtendimentoProvider } from '../providers/tipo-atendimento/tipo-atendimento';
+import { AntropometriaProvider } from '../providers/antropometria/antropometria';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { ConsultasProvider } from '../providers/consultas/consultas';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ConsultasProvider
+    ConsultasProvider,
+    TipoEstadoProvider,
+    TipoAtendimentoProvider,
+    AntropometriaProvider
   ]
 })
 export class AppModule {}
