@@ -82,7 +82,7 @@ export class ConsultasNutricionistaPage {
 
   ionViewDidLoad() {
     this.consultasProvider.listar_all_consultas().subscribe(
-      (dados) => { this.consultas = dados["Dados"]; console.log(this.consultas); }
+      (dados) => { this.consultas = dados["Dados"]; }
     );
     console.log('ionViewDidLoad ConsultasNutricionistaPage');
   }

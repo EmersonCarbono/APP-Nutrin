@@ -10,12 +10,12 @@
 <ion-content padding>
 
   <ion-card *ngFor="let consulta of consultas">
-
+    <div *ngIf="consulta.tipoEstado_id != 'SOLICITADO'">
     <ion-item item-start>
       <ion-avatar item-start>
         <img src="../../../assets/imgs/fotoPerfil.jpg" />
       </ion-avatar>
-      <h2>{{ consulta.paciente_id }}</h2>
+      <h2>{{ consulta.paciente_id.nome }}</h2>
       <ion-badge color="primary">{{ consulta.tipoEstado_id }}</ion-badge>
 
       <ion-icon name="more" color="primary" item-end (click)="acoesSelect()">
@@ -28,16 +28,16 @@
       <ion-row class="info-consulta">
 
         <ion-col>
-        <ion-icon name="calendar"></ion-icon><span>20/10/2018</span>  
+        <ion-icon name="calendar"></ion-icon><span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[1] }}</span>  
         </ion-col>
 
         <ion-col>
-        <ion-icon name="clock"></ion-icon><span>{{ consulta.horario_id }}</span>
+        <ion-icon name="clock"></ion-icon><span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[0] }}</span>
         </ion-col>
       </ion-row>
 
     </ion-card-content>
-
+    </div>
   </ion-card>
 
   <ion-fab right bottom>
