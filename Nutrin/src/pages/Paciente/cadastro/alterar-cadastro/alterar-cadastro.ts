@@ -22,7 +22,7 @@ import { HomePacientePage } from '../../home-paciente/home-paciente';
 export class AlterarCadastroPage {
 
   dados_paciente = this.userDataProvider.getUserData().dados_user;
-
+  username_atual = this.dados_paciente.username;
 
   constructor(
     public navCtrl: NavController,
@@ -44,15 +44,11 @@ export class AlterarCadastroPage {
 
 
   private alterarCadastro(req){
-    console.log(req)
-    console.log(this.dados_paciente);
-  }
-    /*
-      ).subscribe(
+    this.pacienteProvider.alterar_paciente(this.username_atual, this.dados_paciente).subscribe(
       data => {
         const response = (data as any);
         if(response.Status == "Sucesso"){
-          this.pacienteProvider.pesquisar_paciente(username).subscribe(
+          this.pacienteProvider.pesquisar_paciente(this.dados_paciente.username).subscribe(
             paciente_data => {
               const paciente_dados = (paciente_data as any);
               this.userDataProvider.setUserData(true, paciente_dados.Dados);
@@ -64,7 +60,10 @@ export class AlterarCadastroPage {
           this.showAlert(response.Status, response.Mensagem);
         }
       }
-    )*/
+    );
+    console.log(req)
+    console.log(this.dados_paciente);
+  }
 
   ionViewDidLoad() {
 

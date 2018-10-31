@@ -92,7 +92,7 @@
             </div>
 
             <div>
-                <button  ion-button full block class="btn">Salvar</button>
+                <button [disabled]="!FormCadastro.valid" ion-button full block class="btn">Salvar</button>
             </div>
         </form>
     </main>
