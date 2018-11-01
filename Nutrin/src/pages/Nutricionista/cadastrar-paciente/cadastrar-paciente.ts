@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormControl, ValidationErrors } from '@angular/forms';
+import { PacienteProvider } from '../../../providers/pacientes/paciente';
+
+import { AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -14,40 +17,36 @@ export class CadastrarPacientePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public formBuilder: FormBuilder
+    public pacienteProvaider: PacienteProvider,
+    public formBuilder: FormBuilder,
+    public alertCtrl: AlertController
   ) {
-
-    this.cadastro = this.formBuilder.group({
-      nome: new FormControl('', Validators.required),
-      username: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(25)
-      ])),
-      dataNascimento: new FormControl('', Validators.required),
-      sexo: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.email
-      ])),
-      celular: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(11),
-        Validators.maxLength(11)
-      ])),
-      cidade: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(30)
-      ])),
-      profissao: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(100)
-      ])),
-      altura: new FormControl('', Validators.required)
-    })
   }
+
+  showAlert(title, mensagem) {
+    const alert = this.alertCtrl.create({
+      title: title,
+      subTitle: mensagem,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  public cadastrarPaciente(req){
+    this.pacienteProvaider.cadastrar_paciente(req.value).subscribe(
+      data=>{
+        const response = (data as any);
+        if(response.Status == "Sucesso"){
+          this.showAlert(response.Status, response.Mensagem)
+          console.log(response.Mensagem);
+        }else{
+          this.showAlert(response.Status, response.Mensagem)
+          console.log(response.Mensagem);
+        }
+      }
+    );
+    }
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastrarPacientePage');

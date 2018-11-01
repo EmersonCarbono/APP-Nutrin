@@ -61,8 +61,6 @@ export class AlterarCadastroPage {
         }
       }
     );
-    console.log(req)
-    console.log(this.dados_paciente);
   }
 
   ionViewDidLoad() {
