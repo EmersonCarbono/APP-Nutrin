@@ -38,10 +38,9 @@ export class CadastrarPacientePage {
         const response = (data as any);
         if(response.Status == "Sucesso"){
           this.showAlert(response.Status, response.Mensagem)
-          console.log(response.Mensagem);
+          this.navCtrl.pop();
         }else{
           this.showAlert(response.Status, response.Mensagem)
-          console.log(response.Mensagem);
         }
       }
     );

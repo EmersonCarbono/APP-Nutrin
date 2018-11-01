@@ -9,65 +9,102 @@
 
 <ion-content padding>
   <main class="formulario">
-    <form [formGroup]="alterar" (ngSubmit)="alterarCadastro()"  method="PUT" id="alterar">
-      <ion-list>
-  
-        <ion-item class="item">
-          <ion-label floating class="item-label">Nome</ion-label>
-          <ion-input type="text" name="nome" id="nome" formControlName="nome" class="item-campo"></ion-input>
-        </ion-item>
-  
-        <ion-item class="item">
-          <ion-label floating class="item-label">Usuario</ion-label>
-          <ion-input type="text" name="username" id="username" formControlName="username" class="item-campo"></ion-input>
-        </ion-item>
-  
+    <form #FormAlterar="ngForm" (ngSubmit)="alterarCadastro(FormAlterar)">
+      <ion-item>
+        <ion-label floating>Nome</ion-label>
+        <ion-input type="text" id="nome" name="nome" [(ngModel)]="dados_paciente.nome" #nome="ngModel" required></ion-input>
+      </ion-item>
+      <div *ngIf='nome.invalid && (nome.dirty || nome.touched)'>
+        <p *ngIf="nome.errors.required">Este campo é obrigatório</p>
+      </div>
+      <ion-item>
+        <ion-label floating>Usuario</ion-label>
+        <ion-input type="text" id="username" name="username" [(ngModel)]="dados_paciente.username" #username="ngModel" required minlength="5"></ion-input>
+      </ion-item>
+      <div *ngIf='username.invalid && (username.dirty || username.touched)'>
+        <p *ngIf="username.errors.required">Este campo é obrigatório</p>
+        <p *ngIf="username.errors.minlength">Minimo de 5 caracteres</p>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Data de Nascimento</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" type="date" name="dataNascimento" [(ngModel)]="dados_paciente.dataNascimento" #dataNascimento="ngModel"
+          required></ion-datetime>
+      </ion-item>
+      <div *ngIf='dataNascimento.invalid && (dataNascimento.dirty || dataNascimento.touched)'>
+        <p *ngIf="dataNascimento.errors.required">Este campo é obrigatório</p>
+      </div>
+
+      <ion-item>
+        <ion-label floating>E-mail</ion-label>
+        <ion-input type="email" id="email" name="email" [(ngModel)]="dados_paciente.email" #email="ngModel" email required></ion-input>
+      </ion-item>
+      <div *ngIf='email.invalid && (email.dirty || email.touched)'>
+        <p *ngIf="email.errors.required">Este campo é obrigatório</p>
+        <p *ngIf="email.errors.email">Digite um email valido</p>
+      </div>
+
+      <ion-list name="sexo" [(ngModel)]="dados_paciente.sexo" #sexo="ngModel" required radio-group>
+        <ion-list-header>Sexo</ion-list-header>
         <ion-item>
-          <ion-label floating class="item-label">Data de Nascimento</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myDate" type="date" name="dataNascimento" id="dataNascimento" formControlName="dataNascimento" class="item-campo"></ion-datetime>
+          <ion-label>Masculino</ion-label>
+          <ion-radio checked="false" name="sexo" id="sexo s_m" value="M"></ion-radio>
         </ion-item>
-  
-        <ion-item class="item">
-          <ion-label floating class="item-label">E-mail</ion-label>
-          <ion-input type="email" name="email" id="email" formControlName="email" class="item-campo"></ion-input>
-        </ion-item>
-  
-        <ion-list class="item" formControlName="sexo" radio-group>
-          <ion-list-header class="item-label">Sexo</ion-list-header>
-          <ion-item>
-            <ion-label>Masculino</ion-label>
-            <ion-radio checked="false" name="sexo" id="sexo s_m" value="M"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Feminino</ion-label>
-            <ion-radio checked="false" id="sexo s_f" name="sexo" value="F"></ion-radio>
-          </ion-item>
-        </ion-list>
-  
-        <ion-item class="item">
-          <ion-label floating class="item-label">Altura</ion-label>
-          <ion-input type="number" name="altura" id="altura" formControlName="altura" class="item-campo"></ion-input>
-        </ion-item>
-  
-        <ion-item class="item">
-          <ion-label floating class="item-label">Celular</ion-label>
-          <ion-input type="number" name="celular" id="celular" formControlName="celular" class="item-campo"></ion-input>
-        </ion-item>
-  
         <ion-item>
-          <ion-label floating class="item-label">Cidade</ion-label>
-          <ion-input type="text" name="cidade" id="cidade" formControlName="cidade" class="item-campo"></ion-input>
+          <ion-label>Feminino</ion-label>
+          <ion-radio checked="false" id="sexo s_f" name="sexo" value="F"></ion-radio>
         </ion-item>
-  
-        <ion-item>
-          <ion-label floating class="item-label">Profissão</ion-label>
-          <ion-input type="text" name="profissao" id="profissao" formControlName="profissao" class="item-campo"></ion-input>
-        </ion-item>
-  
       </ion-list>
-  
-      <div class="btn-container">
-        <button [disabled]="alterar.invalid" ion-button full block class="btn">Salvar</button>
+      <div *ngIf='sexo.invalid && (sexo.dirty || sexo.touched)'>
+        <p *ngIf="sexo.errors.required">Este campo é obrigatório</p>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Altura</ion-label>
+        <ion-input type="number" id="altura" name="altura" [(ngModel)]="dados_paciente.altura" #altura="ngModel" max='3' min='1' required></ion-input>
+      </ion-item>
+      <div *ngIf='altura.invalid && (altura.dirty || altura.touched)'>
+        <p *ngIf="altura.errors.required">Este campo é obrigatório</p>
+        <p *ngIf="altura.errors.max || altura.errors.min">Alutra devera etar entre 1 e 3 metros</p>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Celular</ion-label>
+        <ion-input type="number" id="celular" name="celular" [(ngModel)]="dados_paciente.celular" #celular="ngModel" required maxlength='11'
+          minlength='11'></ion-input>
+      </ion-item>
+      <div *ngIf='celular.invalid && (celular.dirty || celular.touched)'>
+        <p *ngIf="celular.errors.required">Este campo é obrigatório</p>
+        <p *ngIf="celular.errors.maxlength || celular.errors.minlength">Celular invalido, digite o celular com o DD e 9
+          numeros</p>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Cidade</ion-label>
+        <ion-input type="text" id="cidade" name="cidade" [(ngModel)]="dados_paciente.cidade" #cidade="ngModel" required></ion-input>
+      </ion-item>
+      <div *ngIf='cidade.invalid && (cidade.dirty || cidade.touched)'>
+        <p *ngIf="cidade.errors.required">Este campo é obrigatório</p>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Profissão</ion-label>
+        <ion-input type="text" id="profissao" name="profissao" [(ngModel)]="dados_paciente.profissao" #profissao="ngModel" required></ion-input>
+      </ion-item>
+      <div *ngIf='profissao.invalid && (profissao.dirty || profissao.touched)'>
+        <p *ngIf="profissao.errors.required">Este campo é obrigatório</p>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Objetivo</ion-label>
+        <ion-input type="text" id="objetivo" name="objetivo" [(ngModel)]="dados_paciente.objetivo" #objetivo="ngModel" required></ion-input>
+      </ion-item>
+      <div *ngIf='objetivo.invalid && (objetivo.dirty || objetivo.touched)'>
+        <p *ngIf="objetivo.errors.required">Este campo é obrigatório</p>
+      </div>
+
+      <div>
+        <button [disabled]="!FormAlterar.valid" ion-button full block class="btn">Salvar</button>
       </div>
     </form>
   </main>

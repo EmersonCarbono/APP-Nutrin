@@ -10,6 +10,8 @@ import { PacienteProvider } from '../../../providers/pacientes/paciente';
 })
 export class AlterarPacientePage {
 
+  dados_paciente: any = {};
+  username_atual:any;
   alterar:any = {};
 
   constructor(
@@ -18,59 +20,35 @@ export class AlterarPacientePage {
     public formBuilder: FormBuilder,
     public pacientesProvaider: PacienteProvider,
   ) {
-    let dados_paciente_atual = this.carregarDados();
-
-    console.log(dados_paciente_atual);
-
-    this.alterar = this.formBuilder.group({
-      nome: new FormControl('', Validators.required),
-      username: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(25)
-      ])),
-      dataNascimento: new FormControl('', Validators.required),
-      sexo: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.email
-      ])),
-      celular: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(11),
-        Validators.maxLength(11)
-      ])),
-      cidade: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(30)
-      ])),
-      profissao: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(100)
-      ])),
-      altura: new FormControl('', Validators.required)
-    })
   }
 
   private carregarDados(){
     this.pacientesProvaider.pesquisar_paciente(this.navParams.get("nome_paciente")).subscribe(
       data => {
-          const response = (data as any);
-          const dados = response.Dados;
-          return(dados);
+        const response = ( data as any);
+        this.dados_paciente = response.Dados;
+        this.username_atual = this.dados_paciente.username; 
         }
     )
 
   }
 
-  public alterarCadastro(dados: any){
-    console.log(this.alterar);
+  public alterarCadastro(req){
+    this.pacientesProvaider.alterar_paciente(this.username_atual, this.dados_paciente).subscribe(
+      data => {
+        const response = (data as any);
+        if(response.Status == "Sucesso"){
+          console.log(response.Mensagem);
+          this.navCtrl.pop();
+        }else{
+          console.log(response.Mensagem);
+        }
+      }
+    )
   }
 
   ionViewDidLoad() {
-    
+    this.carregarDados();
   }
 
 }

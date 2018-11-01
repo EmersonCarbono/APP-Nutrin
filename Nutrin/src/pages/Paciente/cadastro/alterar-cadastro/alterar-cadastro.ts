@@ -5,7 +5,6 @@ import { Validators, FormBuilder, FormControl } from '@angular/forms';
 import { PacienteProvider } from '../../../../providers/pacientes/paciente';
 import { UserDataProvider } from '../../../../providers/UserData/userData';
 
-import { PerfilPage } from '../perfil';
 import { AlertController } from 'ionic-angular';
 import { HomePacientePage } from '../../home-paciente/home-paciente';
 
