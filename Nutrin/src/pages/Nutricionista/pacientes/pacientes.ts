@@ -55,13 +55,12 @@ export class PacientesPage {
     actionSheet.present();
   }
 
-  private iniciaizarPacientes() {
+  public iniciaizarPacientes() {
     this.pacienteProvaider.listar_pacientes().subscribe(
       data => {
         const response = (data as any);
         this.lista_pacientes = response.Dados;
         console.log(this.lista_pacientes);
-
       }
     )
   }
@@ -79,6 +78,7 @@ export class PacientesPage {
   }
 
   ionViewDidLoad() {
+    console.log("ola");
     this.iniciaizarPacientes();
 
   }
