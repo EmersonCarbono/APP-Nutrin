@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { PacienteProvider } from '../../../providers/pacientes/paciente';
 import { ActionSheetController } from 'ionic-angular';
 import { AlterarPacientePage } from '../alterar-paciente/alterar-paciente';
@@ -55,8 +55,8 @@ export class PacientesPage {
     actionSheet.present();
   }
 
-  public iniciaizarPacientes() {
-    this.pacienteProvaider.listar_pacientes().subscribe(
+  async iniciaizarPacientes() {
+    await this.pacienteProvaider.listar_pacientes().subscribe(
       data => {
         const response = (data as any);
         this.lista_pacientes = response.Dados;
@@ -78,7 +78,7 @@ export class PacientesPage {
   }
 
   ionViewDidLoad() {
-    console.log("ola");
+    console.log("=============================");
     this.iniciaizarPacientes();
 
   }

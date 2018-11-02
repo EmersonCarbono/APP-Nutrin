@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <main class="formulario">
-    <form #FormCadastro="ngForm" (ngSubmit)="cadastrarPaciente(FormCadastro)">
+    <form #FormCadastro="ngForm" (ngSubmit)="cadastrarPaciente(FormCadastro)" class="formController">
       <ion-item>
         <ion-label floating>Nome</ion-label>
         <ion-input type="text" id="nome" name="nome" ngModel #nome="ngModel" required></ion-input>

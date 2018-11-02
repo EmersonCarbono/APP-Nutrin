@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { PacienteProvider } from '../../../providers/pacientes/paciente';
 
@@ -19,6 +19,7 @@ export class AlterarPacientePage {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public pacientesProvaider: PacienteProvider,
+    public alertCtrl: AlertController,
   ) {
   }
 
@@ -33,12 +34,21 @@ export class AlterarPacientePage {
 
   }
 
+  showAlert(title, mensagem) {
+    const alert = this.alertCtrl.create({
+      title: title,
+      subTitle: mensagem,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
   public alterarCadastro(req){
     this.pacientesProvaider.alterar_paciente(this.username_atual, this.dados_paciente).subscribe(
       data => {
         const response = (data as any);
         if(response.Status == "Sucesso"){
-          console.log(response.Mensagem);
+          this.showAlert(response.Status ,response.Mensagem);
           this.navCtrl.pop();
         }else{
           console.log(response.Mensagem);
