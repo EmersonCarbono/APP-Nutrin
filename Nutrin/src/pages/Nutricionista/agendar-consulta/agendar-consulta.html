@@ -10,43 +10,41 @@
 <ion-content padding>
   <main class="formulario">
 
-    <form [formGroup]="agendar_consulta" method="POST" class="formController">
+    <form method="POST" (ngSubmit)="agendarConsulta()" class="formController">
   
         <ion-item>
-          <ion-label floating class="item-label">Nome</ion-label>
-          <ion-input type="text" name="nome" id="nome" formControlName="nome" class="item-campo"></ion-input>
+          <ion-label>Tipo de Atendimento</ion-label>
+          <ion-select [(ngModel)]="formAgendar.tipoAtendimento_id" name="tipoAtendimento_id">
+            <ion-option value="1"></ion-option>
+          </ion-select>
         </ion-item>
 
         <ion-item>
-          <ion-label>Tipo de Consulta</ion-label>
-          <ion-select formControlName="tipoConsulta">
-            <ion-option value="1">Tipo 1</ion-option>
-            <ion-option value="2">Tipo 2</ion-option>
-            <ion-option value="3">Tipo 3</ion-option>
+          <ion-label>Paciente</ion-label>
+          <ion-select [(ngModel)]="formAgendar.paciente_id" name="paciente_id">
+            <ion-option *ngFor="let paciente of pacientes" [value]='paciente.nome'>{{ paciente.nome }}</ion-option>
           </ion-select>
         </ion-item>
 
         <ion-item>
           <ion-label>Horario</ion-label>
-          <ion-datetime displayFormat="h:mm" pickerFormat="h mm" formControlName="horario"></ion-datetime>
+          <ion-datetime [(ngModel)]="formAgendar.horario_id" name="horario_id" displayFormat="h:mm" pickerFormat="h mm"></ion-datetime>
         </ion-item>
 
         <ion-item>
           <ion-label>Tipo Estado</ion-label>
-          <ion-select formControlName="tipoEstado">
-            <ion-option value="1">Tipo 1</ion-option>
-            <ion-option value="2">Tipo 2</ion-option>
-            <ion-option value="3">Tipo 3</ion-option>
+          <ion-select [(ngModel)]="formAgendar.tipoEstado_id" name="tipoEstado_id">
+            <ion-option *ngFor="let tipoEstado of tipoEstados" [value]="tipoEstado.id">{{tipoEstado.nome}}</ion-option>
           </ion-select>
         </ion-item>
 
         <ion-item>
           <ion-label floating class="item-label">Dieta</ion-label>
-          <ion-input type="text" name="dieta" id="dieta" class="item-campo" formControlName="dieta"></ion-input>
+          <ion-input type="text" [(ngModel)]="formAgendar.dieta" name="dieta" class="item-campo"></ion-input>
         </ion-item>
   
-      <div class>
-        <button [disabled]="agendar_consulta.invalid" ion-button full block class="btn">Agendar</button>
+      <div>
+        <button type="submit" ion-button full block class="btn">Agendar</button>
       </div>
 
     </form>

@@ -19,6 +19,7 @@ import { ConsultasProvider } from '../providers/consultas/consultas';
 import { TipoEstadoProvider } from '../providers/tipo-estado/tipo-estado';
 import { TipoAtendimentoProvider } from '../providers/tipo-atendimento/tipo-atendimento';
 import { AntropometriaProvider } from '../providers/antropometria/antropometria';
+import { HorarioProvider } from '../providers/horario/horario';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { AntropometriaProvider } from '../providers/antropometria/antropometria'
     ConsultasProvider,
     TipoEstadoProvider,
     TipoAtendimentoProvider,
-    AntropometriaProvider
+    AntropometriaProvider,
+    HorarioProvider
   ]
 })
 export class AppModule {}
