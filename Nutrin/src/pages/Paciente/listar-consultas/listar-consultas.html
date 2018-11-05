@@ -7,34 +7,85 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <!-- CAMADA 01 - STATUS -->
-    <ion-item>
-      <ion-badge color="primary" item-start>Confirmado</ion-badge>
-      <button ion-button icon-only clear (click)="menuListSelect()" item-end>
-        <ion-icon name="more"></ion-icon>
-      </button>
-    </ion-item>
-    <ion-card-content>
-      <!-- CAMADA 02 - TITULO -->
-      <ion-card-title>
-        Titulo da consulta
-      </ion-card-title>
-      <!-- CAMADA 03 - INFORMAÇÕES DA CONSULTA -->
-      <ion-row>
-        <ion-col class="agenda-consulta">
-          <ion-icon name="calendar"></ion-icon>
-          <ion-note>01/09/2018</ion-note>
-          <ion-icon name="clock"></ion-icon>
-          <ion-note>09:00 horas</ion-note>
-          <br/>
-          <ion-icon name="map"></ion-icon>
-          <ion-note>Oscar Freire, 533 - Jardins - São Paulo - SP</ion-note>
-        </ion-col>
-      </ion-row>
 
-    </ion-card-content>
-  </ion-card>
+  <div padding>
+
+    <ion-segment [(ngModel)]="filtro">
+      <ion-segment-button value="confirmados">
+        Confirmados
+      </ion-segment-button>
+      <ion-segment-button value="solicitados">
+        Solicitados
+      </ion-segment-button>
+    </ion-segment>
+
+  </div>
+
+  <div [ngSwitch]="filtro">
+
+    <div *ngSwitchCase="'confirmados'">
+      <ion-card>
+        <!-- CAMADA 01 - STATUS -->
+        <ion-item>
+          <ion-badge color="primary" item-start>Confirmado</ion-badge>
+          <button ion-button icon-only clear (click)="menuListSelect()" item-end>
+            <ion-icon name="more"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-card-content>
+          <!-- CAMADA 02 - TITULO -->
+          <ion-card-title>
+            Titulo da consulta
+          </ion-card-title>
+          <!-- CAMADA 03 - INFORMAÇÕES DA CONSULTA -->
+          <ion-row>
+            <ion-col class="agenda-consulta">
+              <ion-icon name="calendar"></ion-icon>
+              <ion-note>01/09/2018</ion-note>
+              <ion-icon name="clock"></ion-icon>
+              <ion-note>09:00 horas</ion-note>
+              <br/>
+              <ion-icon name="map"></ion-icon>
+              <ion-note>Oscar Freire, 533 - Jardins - São Paulo - SP</ion-note>
+            </ion-col>
+          </ion-row>
+      
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div *ngSwitchCase="'solicitados'">
+      <ion-card>
+        <!-- CAMADA 01 - STATUS -->
+        <ion-item>
+          <ion-badge color="secondary" item-start>Solicitados</ion-badge>
+          <button ion-button icon-only clear (click)="menuListSelect()" item-end>
+            <ion-icon name="more"></ion-icon>
+          </button>
+        </ion-item>
+        <ion-card-content>
+          <!-- CAMADA 02 - TITULO -->
+          <ion-card-title>
+            Titulo da consulta
+          </ion-card-title>
+          <!-- CAMADA 03 - INFORMAÇÕES DA CONSULTA -->
+          <ion-row>
+            <ion-col class="agenda-consulta">
+              <ion-icon name="calendar"></ion-icon>
+              <ion-note>01/09/2018</ion-note>
+              <ion-icon name="clock"></ion-icon>
+              <ion-note>09:00 horas</ion-note>
+              <br/>
+              <ion-icon name="map"></ion-icon>
+              <ion-note>Oscar Freire, 533 - Jardins - São Paulo - SP</ion-note>
+            </ion-col>
+          </ion-row>
+    
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  </div>
 
   <ion-fab right bottom>
     <button ion-fab color="primary" (click)="modalSolicitarConsulta()">

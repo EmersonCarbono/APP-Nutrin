@@ -9,36 +9,130 @@
 
 <ion-content padding>
 
-  <ion-card *ngFor="let consulta of consultas">
-    <div *ngIf="consulta.tipoEstado_id == 'CONFIRMADO'">
-    <ion-item item-start>
-      <ion-avatar item-start>
-        <img src="../../../assets/imgs/fotoPerfil.jpg" />
-      </ion-avatar>
-      <h2>{{ consulta.paciente_id.nome }}</h2>
-      <ion-badge color="primary">{{ consulta.tipoEstado_id }}</ion-badge>
+  <div padding>
+  
+    <ion-segment [(ngModel)]="filtro">
+      <ion-segment-button value="confirmados">
+        Confirmados
+      </ion-segment-button>
+      <ion-segment-button value="solicitados">
+        Solicitados
+      </ion-segment-button>
+      <ion-segment-button value="realizados">
+        Realizados
+      </ion-segment-button>
+    </ion-segment>
+  
+  </div>
 
-      <ion-icon name="more" color="primary" item-end (click)="acoesSelect()">
-      </ion-icon>
-    </ion-item>
+  <div [ngSwitch]="filtro">
 
-    <ion-card-content>
-      <h1 class="title">{{ consulta.tipoAtendimento_id }}</h1>
+    <div *ngSwitchCase="'confirmados'">
+      <ion-card *ngFor="let consulta of consultas">
+        <div *ngIf="consulta.tipoEstado_id == 'CONFIRMADO'">
+          <ion-item item-start>
+            <ion-avatar item-start>
+              <img src="../../../assets/imgs/fotoPerfil.jpg" />
+            </ion-avatar>
+            <h2>{{ consulta.paciente_id.nome }}</h2>
+            <ion-badge color="primary">{{ consulta.tipoEstado_id }}</ion-badge>
       
-      <ion-row class="info-consulta">
-
-        <ion-col>
-        <ion-icon name="calendar"></ion-icon><span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[1] }}</span>  
-        </ion-col>
-
-        <ion-col>
-        <ion-icon name="clock"></ion-icon><span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[0] }}</span>
-        </ion-col>
-      </ion-row>
-
-    </ion-card-content>
+            <ion-icon name="more" color="primary" item-end (click)="acoesSelect()">
+            </ion-icon>
+          </ion-item>
+      
+          <ion-card-content>
+            <h1 class="title">{{ consulta.tipoAtendimento_id }}</h1>
+      
+            <ion-row class="info-consulta">
+      
+              <ion-col>
+                <ion-icon name="calendar"></ion-icon>
+                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[1] }}</span>
+              </ion-col>
+      
+              <ion-col>
+                <ion-icon name="clock"></ion-icon>
+                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[0] }}</span>
+              </ion-col>
+            </ion-row>
+      
+          </ion-card-content>
+        </div>
+      </ion-card>
     </div>
-  </ion-card>
+
+    <div *ngSwitchCase="'solicitados'">
+      <ion-card *ngFor="let consulta of consultas">
+        <div *ngIf="consulta.tipoEstado_id == 'SOLICITADO'">
+          <ion-item item-start>
+            <ion-avatar item-start>
+              <img src="../../../assets/imgs/fotoPerfil.jpg" />
+            </ion-avatar>
+            <h2>{{ consulta.paciente_id.nome }}</h2>
+            <ion-badge color="secondary">{{ consulta.tipoEstado_id }}</ion-badge>
+    
+            <ion-icon name="more" color="primary" item-end (click)="acoesSelect()">
+            </ion-icon>
+          </ion-item>
+    
+          <ion-card-content>
+            <h1 class="title">{{ consulta.tipoAtendimento_id }}</h1>
+    
+            <ion-row class="info-consulta">
+    
+              <ion-col>
+                <ion-icon name="calendar"></ion-icon>
+                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[1] }}</span>
+              </ion-col>
+    
+              <ion-col>
+                <ion-icon name="clock"></ion-icon>
+                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[0] }}</span>
+              </ion-col>
+            </ion-row>
+    
+          </ion-card-content>
+        </div>
+      </ion-card>
+    </div>
+
+    <div *ngSwitchCase="'realizados'">
+      <ion-card *ngFor="let consulta of consultas">
+        <div *ngIf="consulta.tipoEstado_id == 'REALIZADO'">
+          <ion-item item-start>
+            <ion-avatar item-start>
+              <img src="../../../assets/imgs/fotoPerfil.jpg" />
+            </ion-avatar>
+            <h2>{{ consulta.paciente_id.nome }}</h2>
+            <ion-badge color="primary">{{ consulta.tipoEstado_id }}</ion-badge>
+    
+            <ion-icon name="more" color="primary" item-end (click)="acoesSelect()">
+            </ion-icon>
+          </ion-item>
+    
+          <ion-card-content>
+            <h1 class="title">{{ consulta.tipoAtendimento_id }}</h1>
+    
+            <ion-row class="info-consulta">
+    
+              <ion-col>
+                <ion-icon name="calendar"></ion-icon>
+                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[1] }}</span>
+              </ion-col>
+    
+              <ion-col>
+                <ion-icon name="clock"></ion-icon>
+                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[0] }}</span>
+              </ion-col>
+            </ion-row>
+    
+          </ion-card-content>
+        </div>
+      </ion-card>
+    </div>
+
+  </div>
 
   <ion-fab right bottom>
     <button ion-fab color="primary" (click)="pushPage('AgendarConsultaPage')">

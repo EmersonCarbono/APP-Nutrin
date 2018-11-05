@@ -9,12 +9,16 @@ import { ModalSolicitarConsultaPage} from '../modal-solicitar-consulta/modal-sol
 })
 export class ListarConsultasPage {
 
+  filtro = "";
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public actionsheetCtrl: ActionSheetController,
     public modalCtrl: ModalController
-  ) {}
+  ) {
+    this.filtro = "confirmados";
+  }
 
   // FUNÇÃO MENU LISTA + BOTOES EDITAR E REMOVER
   menuListSelect() {
