@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the CadastrarAntropometriaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-cadastrar-antropometria',
@@ -15,11 +8,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CadastrarAntropometriaPage {
 
+  formAntropometria:any = {
+    peso: 0.0,
+    braco: 0.0,
+    torax: 0.0,
+    cintura: 0.0,
+    abdomen: 0.0,
+    quadril: 0.0,
+    coxa: 0.0,
+    biceps: 0.0,
+    triceps: 0.0,
+    peito: 0.0,
+    subsCap: 0.0,
+    axiliar: 0.0,
+    gorduraPerc: 0.0,
+    aguaPerc: 0.0,
+    pesoMagro: 0.0
+  }
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  cadastrarAntropometria() {
+    return console.log(this.formAntropometria);
+  }
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastrarAntropometriaPage');
+    this.cadastrarAntropometria();
   }
 
 }
