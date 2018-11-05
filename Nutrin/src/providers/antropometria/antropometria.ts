@@ -16,24 +16,7 @@ export class AntropometriaProvider {
     return this.http.get(this.base + "/antropometria/buscar/" + id)
   }
 
-  public antropometriaCreate(peso, braco, torax, cintura, abdomen, quadril, coxa, biceps, triceps, peito, subsCap, axilar, gorduraPerc, aguaPerc, pesoMagro) {
-    var dados = {
-      "peso": peso,
-      "braco": braco,
-      "torax": torax,
-      "cintura": cintura,
-      "abdomen": abdomen,
-      "quadril": quadril,
-      "coxa": coxa,
-      "biceps": biceps,
-      "triceps": triceps,
-      "peito": peito,
-      "subsCap": subsCap,
-      "axilar": axilar,
-      "gorduraPerc": gorduraPerc,
-      "aguaPerc": aguaPerc,
-      "pesoMagro": pesoMagro
-    };
+  public antropometriaCreate(dados: any) {
     return this.http.post(this.base + "/antropometria/cadastrar", dados);
   }
 

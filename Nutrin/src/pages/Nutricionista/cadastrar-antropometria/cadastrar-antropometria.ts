@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { AntropometriaProvider } from '../../../providers/antropometria/antropometria';
 
 @IonicPage()
 @Component({
@@ -20,21 +21,40 @@ export class CadastrarAntropometriaPage {
     triceps: 0.0,
     peito: 0.0,
     subsCap: 0.0,
-    axiliar: 0.0,
+    axilar: 0.0,
     gorduraPerc: 0.0,
     aguaPerc: 0.0,
     pesoMagro: 0.0
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public antropometriaProvider: AntropometriaProvider,
+    public alertCtrl: AlertController,
+    ) {
   }
 
+  showAlert(title, mensagem) {
+    const alert = this.alertCtrl.create({
+      title: title,
+      subTitle: mensagem,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+
   cadastrarAntropometria() {
-    return console.log(this.formAntropometria);
+    this.antropometriaProvider.antropometriaCreate(this.formAntropometria).subscribe(
+      data => {
+        const response = (data as any);
+        this.showAlert(response.Status, response.Mensagem);
+      }
+    )
   }
 
   ionViewDidLoad() {
-    this.cadastrarAntropometria();
   }
 
 }
