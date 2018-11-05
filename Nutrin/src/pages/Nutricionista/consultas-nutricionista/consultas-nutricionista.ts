@@ -10,13 +10,16 @@ import { ConsultasProvider } from '../../../providers/consultas/consultas';
 export class ConsultasNutricionistaPage {
 
   consultas:any = new Array<any>();
+  filtro = "";
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public actionsheetCtrl: ActionSheetController,
     public consultasProvider: ConsultasProvider
-  ) {}
+  ) {
+    this.filtro = "confirmados";
+  }
 
   filtroSelect() {
     let filtro = this.actionsheetCtrl.create({
