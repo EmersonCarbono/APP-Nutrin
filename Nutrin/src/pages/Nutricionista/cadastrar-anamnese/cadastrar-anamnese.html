@@ -1,0 +1,95 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>cadastrar-anamnese</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #FormCadastrar="ngForm" class="formController" (ngSubmit)="cadastrarAnamnese(FormCadastrar)">
+    <ion-item>
+      <ion-label floating>Quantidade de Atividade Fisica</ion-label>
+      <ion-input type="number" id="qtdAtividadeFisica" ngModel name="qtdAtividadeFisica" ngModel #qtdAtividadeFisica="ngModel"
+        required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Tipo de Exercicio</ion-label>
+      <ion-input type="text" id="tipoExercicio" ngModel name="tipoExercicio" ngModel #tipoExercicio="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="myDate" id="horaAcorda" ngModel name="horaAcorda" ngModel #horaAcorda="ngModel" required></ion-datetime>
+      <ion-label floating>Horario que Acorda</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Padrão de Refeição</ion-label>
+      <ion-input type="text" id="padraoRefeicao" ngModel name="padraoRefeicao" ngModel #padraoRefeicao="ngModel"
+        required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Padrão de Refeição</ion-label>
+      <ion-input type="text" id="deficienciaAlimentacaoDiaria" ngModel name="deficienciaAlimentacaoDiaria" ngModel
+        #deficienciaAlimentacaoDiaria="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Necessita Suplemento Alimentar</ion-label>
+      <ion-input type="text" id="necessitaSuplementoAlimentar" ngModel name="necessitaSuplementoAlimentar" ngModel
+        #necessitaSuplementoAlimentar="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Retenção de liquido</ion-label>
+        <ion-checkbox id="retencaoLiquido" ngModel name="retencaoLiquido" ngModel #retencaoLiquido="ngModel" disabled="true"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Alergia a remedio</ion-label>
+      <ion-input type="text" id="alergiaRemedio" ngModel name="alergiaRemedio" ngModel #alergiaRemedio="ngModel"
+        required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Alergia a suplemento</ion-label>
+      <ion-input type="text" id="alergiaSuplemento" ngModel name="alergiaSuplemento" ngModel #alergiaSuplemento="ngModel"
+        required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Intolerancia alimentar</ion-label>
+      <ion-input type="text" id="intoleranciaAlimentar" ngModel name="intoleranciaAlimentar" ngModel
+        #intoleranciaAlimentar="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Ploblema de Saude</ion-label>
+      <ion-input type="text" id="problemaSaude" ngModel name="problemaSaude" ngModel #problemaSaude="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Ploblema de Saude na familia</ion-label>
+      <ion-input type="text" id="problemaSaudeFamilia" ngModel name="problemaSaudeFamilia" ngModel
+        #problemaSaudeFamilia="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Medicação</ion-label>
+      <ion-input type="text" id="medicacao" ngModel name="medicacao" ngModel #medicacao="ngModel" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Suplementação</ion-label>
+      <ion-input type="text" id="suplementacao" ngModel name="suplementacao" ngModel #suplementacao="ngModel" required></ion-input>
+    </ion-item>
+
+    <div>
+      <button [disabled]="!FormCadastrar.valid" ion-button full block class="btn">Salvar</button>
+    </div>
+  </form>
+
+</ion-content>
