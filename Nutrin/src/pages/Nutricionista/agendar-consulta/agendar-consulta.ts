@@ -16,7 +16,6 @@ export class AgendarConsultaPage {
   pacientes:any = new Array<any>();
   tipoAtendimentos:any = new Array<any>();
   tipoEstados:any = new Array<any>();
-  datas:any = new Array<any>();
   horarios:any = new Array<any>();
 
   constructor(
@@ -26,7 +25,8 @@ export class AgendarConsultaPage {
     public tipoAtendimentoProvider: TipoAtendimentoProvider,
     public tipoEstadoProvider: TipoEstadoProvider,
     public horarioProvider: HorarioProvider
-  ) {}
+  ) {
+  }
 
   getPaciente() {
     return this.pacienteProvider.listar_pacientes().subscribe(
@@ -42,10 +42,7 @@ export class AgendarConsultaPage {
 
   getHorario() {
     return this.horarioProvider.horarioRead().subscribe(
-      (dados) => {
-        this.datas = Object.keys(dados["Dados"]); console.log(this.datas);
-        this.horarios = dados["Dados"]; console.log(this.horarios);
-      }
+      (dados) => { this.horarios = dados["Dados"]; console.log(this.horarios); }
     )
   }
 

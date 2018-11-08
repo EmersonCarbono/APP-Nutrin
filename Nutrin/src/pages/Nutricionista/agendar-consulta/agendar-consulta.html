@@ -24,7 +24,7 @@
 
         <ion-item>
           <ion-label>Paciente</ion-label>
-          <ion-select #paciente_id="ngModel" ngModel name="paciente_id" requerid>
+          <ion-select [(ngModel)]="dataSelect" #paciente_id="ngModel" ngModel name="paciente_id" requerid>
             <ion-option *ngFor="let paciente of pacientes" [value]='paciente.id'>{{ paciente.nome }}</ion-option>
           </ion-select>
         </ion-item>
@@ -35,7 +35,7 @@
         <ion-item>
           <ion-label>Data</ion-label>
           <ion-select #data="ngModel" ngModel name="data" requerid>
-            <ion-option *ngFor="let data of datas" [value]='data'>{{ data }}</ion-option>
+            <ion-option *ngFor="let horario of horarios" [value]='horario.dia'>{{ horario.dia }}</ion-option>
           </ion-select>
         </ion-item>
         <div *ngIf='data.invalid && (data.dirty || data.touched)'>
@@ -43,11 +43,17 @@
         </div>
 
         <ion-item>
-          <ion-label>Horario</ion-label>
-          <ion-datetime #horario_id="ngModel" ngModel name="horario_id" displayFormat="h:mm" pickerFormat="h mm" requerid></ion-datetime>
+          <ion-label>Horarios</ion-label>
+          <ion-select #horario="ngModel" ngModel name="horario" requerid>
+            <div *ngFor="let horario of horarios">
+              <div *ngIf="horario.dia == '2018-11-01'">
+                <ion-option *ngFor="let hora of horario.horas" [value]='hora'>{{ hora }}:00</ion-option>
+                </div>
+            </div>
+          </ion-select>
         </ion-item>
-        <div *ngIf='horario_id.invalid && (horario_id.dirty || horario_id.touched)'>
-          <p *ngIf="horario_id.errors.required">Este campo é obrigatório</p>
+        <div *ngIf='data.invalid && (data.dirty || data.touched)'>
+          <p *ngIf="data.errors.required">Este campo é obrigatório</p>
         </div>
 
         <ion-item>
