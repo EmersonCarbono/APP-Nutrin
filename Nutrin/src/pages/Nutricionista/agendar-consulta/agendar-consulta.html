@@ -46,14 +46,14 @@
           <ion-label>Horarios</ion-label>
           <ion-select #horario="ngModel" ngModel name="horario" requerid>
             <div *ngFor="let horario of horarios">
-              <div *ngIf="horario.dia == '2018-11-01'">
+              <div *ngIf="horario.dia == data.value">
                 <ion-option *ngFor="let hora of horario.horas" [value]='hora'>{{ hora }}:00</ion-option>
                 </div>
             </div>
           </ion-select>
         </ion-item>
-        <div *ngIf='data.invalid && (data.dirty || data.touched)'>
-          <p *ngIf="data.errors.required">Este campo é obrigatório</p>
+        <div *ngIf='horario.invalid && (horario.dirty || horario.touched)'>
+          <p *ngIf="horario.errors.required">Este campo é obrigatório</p>
         </div>
 
         <ion-item>
@@ -64,14 +64,6 @@
         </ion-item>
         <div *ngIf='tipoEstado_id.invalid && (tipoEstado_id.dirty || tipoEstado_id.touched)'>
           <p *ngIf="tipoEstado_id.errors.required">Este campo é obrigatório</p>
-        </div>
-
-        <ion-item>
-          <ion-label floating class="item-label">Dieta</ion-label>
-          <ion-input type="text" #dieta="ngModel"ngModel name="dieta" class="item-campo" required></ion-input>
-        </ion-item>
-        <div *ngIf='dieta.invalid && (dieta.dirty || dieta.touched)'>
-          <p *ngIf="dieta.errors.required">Este campo é obrigatório</p>
         </div>
   
       <div>
