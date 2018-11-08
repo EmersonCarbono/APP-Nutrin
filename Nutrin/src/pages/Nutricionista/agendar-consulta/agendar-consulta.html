@@ -10,12 +10,12 @@
 <ion-content padding>
   <main class="formulario">
 
-    <form method="POST" (ngSubmit)="agendarConsulta()" class="formController">
+    <form method="POST" #dados="ngForm" (ngSubmit)="agendarConsulta(dados)" class="formController">
   
         <ion-item>
           <ion-label>Tipo de Atendimento</ion-label>
-          <ion-select [(ngModel)]="formAgendar.tipoAtendimento_id" #tipoAtendimento_id="ngModel" name="tipoAtendimento_id" requerid>
-            <ion-option value="1"></ion-option>
+          <ion-select #tipoAtendimento_id="ngModel" ngModel name="tipoAtendimento_id" requerid>
+            <ion-option *ngFor="let atendimento of tipoAtendimentos" [value]="atendimento.id">{{ atendimento.nome }}</ion-option>
           </ion-select>
         </ion-item>
         <div *ngIf='tipoAtendimento_id.invalid && (tipoAtendimento_id.dirty || tipoAtendimento_id.touched)'>
@@ -24,8 +24,8 @@
 
         <ion-item>
           <ion-label>Paciente</ion-label>
-          <ion-select [(ngModel)]="formAgendar.paciente_id" #paciente_id="ngModel" name="paciente_id" requerid>
-            <ion-option *ngFor="let paciente of pacientes" [value]='paciente.nome'>{{ paciente.nome }}</ion-option>
+          <ion-select #paciente_id="ngModel" ngModel name="paciente_id" requerid>
+            <ion-option *ngFor="let paciente of pacientes" [value]='paciente.id'>{{ paciente.nome }}</ion-option>
           </ion-select>
         </ion-item>
         <div *ngIf='paciente_id.invalid && (paciente_id.dirty || paciente_id.touched)'>
@@ -33,8 +33,18 @@
         </div>
 
         <ion-item>
+          <ion-label>Data</ion-label>
+          <ion-select #data="ngModel" ngModel name="data" requerid>
+            <ion-option *ngFor="let data of datas" [value]='data'>{{ data }}</ion-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf='data.invalid && (data.dirty || data.touched)'>
+          <p *ngIf="data.errors.required">Este campo é obrigatório</p>
+        </div>
+
+        <ion-item>
           <ion-label>Horario</ion-label>
-          <ion-datetime [(ngModel)]="formAgendar.horario_id" #horario_id="ngModel" name="horario_id" displayFormat="h:mm" pickerFormat="h mm" requerid></ion-datetime>
+          <ion-datetime #horario_id="ngModel" ngModel name="horario_id" displayFormat="h:mm" pickerFormat="h mm" requerid></ion-datetime>
         </ion-item>
         <div *ngIf='horario_id.invalid && (horario_id.dirty || horario_id.touched)'>
           <p *ngIf="horario_id.errors.required">Este campo é obrigatório</p>
@@ -42,7 +52,7 @@
 
         <ion-item>
           <ion-label>Tipo Estado</ion-label>
-          <ion-select [(ngModel)]="formAgendar.tipoEstado_id" #tipoEstado_id="ngModel" name="tipoEstado_id" required>
+          <ion-select #tipoEstado_id="ngModel" name="tipoEstado_id" ngModel required>
             <ion-option *ngFor="let tipoEstado of tipoEstados" [value]="tipoEstado.id">{{tipoEstado.nome}}</ion-option>
           </ion-select>
         </ion-item>
@@ -52,7 +62,7 @@
 
         <ion-item>
           <ion-label floating class="item-label">Dieta</ion-label>
-          <ion-input type="text" [(ngModel)]="formAgendar.dieta" #dieta="ngModel" name="dieta" class="item-campo" required></ion-input>
+          <ion-input type="text" #dieta="ngModel"ngModel name="dieta" class="item-campo" required></ion-input>
         </ion-item>
         <div *ngIf='dieta.invalid && (dieta.dirty || dieta.touched)'>
           <p *ngIf="dieta.errors.required">Este campo é obrigatório</p>
