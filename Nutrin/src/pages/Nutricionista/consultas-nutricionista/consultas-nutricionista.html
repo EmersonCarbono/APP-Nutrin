@@ -10,6 +10,7 @@
 <ion-content padding>
 
   <div padding>
+    <span #idConsulta>15</span>
   
     <ion-segment [(ngModel)]="filtro">
       <ion-segment-button value="confirmados">
@@ -29,7 +30,7 @@
 
     <div *ngSwitchCase="'confirmados'">
       <ion-card *ngFor="let consulta of consultas">
-        <div *ngIf="consulta.tipoEstado_id == 'CONFIRMADO'">
+        <div *ngIf="consulta.tipoEstado_id == 'AGENDADO'">
           <ion-item item-start>
             <ion-avatar item-start>
               <img src="../../../assets/imgs/fotoPerfil.jpg" />
@@ -43,6 +44,7 @@
       
           <ion-card-content>
             <h1 class="title">{{ consulta.tipoAtendimento_id }}</h1>
+            
       
             <ion-row class="info-consulta">
       

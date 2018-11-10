@@ -14,17 +14,17 @@
   
         <ion-item>
           <ion-label>Tipo de Atendimento</ion-label>
-          <ion-select #tipoAtendimento_id="ngModel" ngModel name="tipoAtendimento_id" requerid>
+          <ion-select #tipoAtendimento_id="ngModel" [(ngModel)]="consulta_json.tipoAtendimento_id" name="tipoAtendimento_id" requerid>
             <ion-option *ngFor="let atendimento of tipoAtendimentos" [value]="atendimento.id">{{ atendimento.nome }}</ion-option>
           </ion-select>
         </ion-item>
-        <div *ngIf='tipoAtendimento_id.invalid && (tipoAtendimento_id.dirty || tipoAtendimento_id.touched)'>
+        <div *ngIf='!tipoAtendimento_id.valid && (tipoAtendimento_id.dirty || tipoAtendimento_id.touched)'>
           <p *ngIf="tipoAtendimento_id.errors.required">Este campo é obrigatório</p>
         </div>
 
         <ion-item>
           <ion-label>Paciente</ion-label>
-          <ion-select [(ngModel)]="dataSelect" #paciente_id="ngModel" ngModel name="paciente_id" requerid>
+          <ion-select [(ngModel)]="dataSelect"  [(ngModel)]="consulta_json.paciente_id" #paciente_id="ngModel" ngModel name="paciente_id" requerid>
             <ion-option *ngFor="let paciente of pacientes" [value]='paciente.id'>{{ paciente.nome }}</ion-option>
           </ion-select>
         </ion-item>
@@ -34,7 +34,7 @@
 
         <ion-item>
           <ion-label>Data</ion-label>
-          <ion-select #data="ngModel" ngModel name="data" requerid>
+          <ion-select #data="ngModel" [(ngModel)]="consulta_json.data" name="data" requerid>
             <ion-option *ngFor="let horario of horarios" [value]='horario.dia'>{{ horario.dia }}</ion-option>
           </ion-select>
         </ion-item>
@@ -44,7 +44,7 @@
 
         <ion-item>
           <ion-label>Horarios</ion-label>
-          <ion-select #horario="ngModel" ngModel name="horario" requerid>
+          <ion-select #horario="ngModel" [(ngModel)]="consulta_json.horaI" name="horario" requerid>
             <div *ngFor="let horario of horarios">
               <div *ngIf="horario.dia == data.value">
                 <ion-option *ngFor="let hora of horario.horas" [value]='hora'>{{ hora }}:00</ion-option>
@@ -58,7 +58,7 @@
 
         <ion-item>
           <ion-label>Tipo Estado</ion-label>
-          <ion-select #tipoEstado_id="ngModel" name="tipoEstado_id" ngModel required>
+          <ion-select #tipoEstado_id="ngModel" name="tipoEstado_id" [(ngModel)]="consulta_json.tipoEstado_id"  required>
             <ion-option *ngFor="let tipoEstado of tipoEstados" [value]="tipoEstado.id">{{tipoEstado.nome}}</ion-option>
           </ion-select>
         </ion-item>
@@ -67,7 +67,7 @@
         </div>
   
       <div>
-        <button type="submit" ion-button full block class="btn">Agendar</button>
+        <button [disabled]="!dados.valid" type="submit" ion-button full block class="btn">Agendar</button>
       </div>
 
     </form>
