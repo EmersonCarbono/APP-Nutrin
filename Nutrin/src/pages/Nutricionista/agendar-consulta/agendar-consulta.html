@@ -14,7 +14,7 @@
   
         <ion-item>
           <ion-label>Tipo de Atendimento</ion-label>
-          <ion-select #tipoAtendimento_id="ngModel" ngModel name="tipoAtendimento_id" requerid>
+          <ion-select #tipoAtendimento_id="ngModel" ngModel name="tipoAtendimento_id" required>
             <ion-option *ngFor="let atendimento of tipoAtendimentos" [value]="atendimento.id">{{ atendimento.nome }}</ion-option>
           </ion-select>
         </ion-item>
@@ -24,7 +24,7 @@
 
         <ion-item>
           <ion-label>Paciente</ion-label>
-          <ion-select [(ngModel)]="dataSelect" #paciente_id="ngModel" ngModel name="paciente_id" requerid>
+          <ion-select [(ngModel)]="dataSelect" #paciente_id="ngModel" ngModel name="paciente_id" required>
             <ion-option *ngFor="let paciente of pacientes" [value]='paciente.id'>{{ paciente.nome }}</ion-option>
           </ion-select>
         </ion-item>
@@ -34,7 +34,7 @@
 
         <ion-item>
           <ion-label>Data</ion-label>
-          <ion-select #data="ngModel" ngModel name="data" requerid>
+          <ion-select #data="ngModel" name="data" ngModel required>
             <ion-option *ngFor="let horario of horarios" [value]='horario.dia'>{{ horario.dia }}</ion-option>
           </ion-select>
         </ion-item>
@@ -44,7 +44,7 @@
 
         <ion-item>
           <ion-label>Horarios</ion-label>
-          <ion-select #horario="ngModel" ngModel name="horario" requerid>
+          <ion-select #horario="ngModel" name="horario" ngModel required>
             <div *ngFor="let horario of horarios">
               <div *ngIf="horario.dia == data.value">
                 <ion-option *ngFor="let hora of horario.horas" [value]='hora'>{{ hora }}:00</ion-option>
@@ -54,6 +54,7 @@
         </ion-item>
         <div *ngIf='horario.invalid && (horario.dirty || horario.touched)'>
           <p *ngIf="horario.errors.required">Este campo é obrigatório</p>
+          <p *ngIf="!data.value">Preencha o campo Data primeiro</p>
         </div>
 
         <ion-item>
@@ -67,7 +68,7 @@
         </div>
   
       <div>
-        <button type="submit" ion-button full block class="btn">Agendar</button>
+        <button [disabled]="!dados.valid" type="submit" ion-button full block class="btn">Agendar</button>
       </div>
 
     </form>
