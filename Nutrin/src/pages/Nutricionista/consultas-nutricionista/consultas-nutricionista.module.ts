@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
+
 import { ConsultasNutricionistaPage } from './consultas-nutricionista';
 import { AgendarConsultaPageModule } from '../agendar-consulta/agendar-consulta.module';
+import { DetalheConsultaPageModule } from '../detalhe-consulta/detalhe-consulta.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +11,8 @@ import { AgendarConsultaPageModule } from '../agendar-consulta/agendar-consulta.
   ],
   imports: [
     IonicPageModule.forChild(ConsultasNutricionistaPage),
-    AgendarConsultaPageModule
+    AgendarConsultaPageModule,
+    DetalheConsultaPageModule
   ],
 })
 export class ConsultasNutricionistaPageModule {}
