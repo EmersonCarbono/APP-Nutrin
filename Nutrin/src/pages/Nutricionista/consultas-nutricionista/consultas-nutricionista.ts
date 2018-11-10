@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { ConsultasProvider } from '../../../providers/consultas/consultas';
+import { AlterarConsultaPage } from '../alterar-consulta/alterar-consulta'
 import { DetalheConsultaPage } from '../detalhe-consulta/detalhe-consulta';
+
 
 @IonicPage()
 @Component({
@@ -12,6 +14,7 @@ export class ConsultasNutricionistaPage {
 
   consultas:any = new Array<any>();
   filtro = "";
+  @ViewChild('idConsulta') id_consulta: HTMLElement;
 
   constructor(
     public navCtrl: NavController,
@@ -64,7 +67,8 @@ export class ConsultasNutricionistaPage {
           role: 'destructive',
           icon: 'create',
           handler: () => {
-            console.log("editar");
+            //this.navCtrl.push('AlterarConsultaPage', );
+            console.log(this.id_consulta.innerText);
           }
         },
         {
@@ -94,7 +98,6 @@ export class ConsultasNutricionistaPage {
     this.consultasProvider.consultasRead().subscribe(
       (dados) => { this.consultas = dados["Dados"]; }
     );
-    console.log('ionViewDidLoad ConsultasNutricionistaPage');
   }
 
 }
