@@ -32,7 +32,7 @@
       <ion-card *ngFor="let consulta of consultas">
         <div *ngIf="consulta.tipoEstado_id == 'AGENDADO'">
           <ion-item item-start>
-            <ion-avatar item-start>
+            <ion-avatar item-start (click)="consultaDetalhada(consulta)">
               <img src="../../../assets/imgs/fotoPerfil.jpg" />
             </ion-avatar>
             <h2>{{ consulta.paciente_id.nome }}</h2>
@@ -67,7 +67,7 @@
     <div *ngSwitchCase="'solicitados'">
       <ion-card *ngFor="let consulta of consultas">
         <div *ngIf="consulta.tipoEstado_id == 'SOLICITADO'">
-          <ion-item item-start>
+          <ion-item item-start (click)="consultaDetalhada(consulta)">
             <ion-avatar item-start>
               <img src="../../../assets/imgs/fotoPerfil.jpg" />
             </ion-avatar>
@@ -102,7 +102,7 @@
     <div *ngSwitchCase="'realizados'">
       <ion-card *ngFor="let consulta of consultas">
         <div *ngIf="consulta.tipoEstado_id == 'REALIZADO'">
-          <ion-item item-start>
+          <ion-item item-start (click)="consultaDetalhada(consulta)">
             <ion-avatar item-start>
               <img src="../../../assets/imgs/fotoPerfil.jpg" />
             </ion-avatar>

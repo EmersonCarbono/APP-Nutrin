@@ -24,6 +24,7 @@
 
         <ion-item>
           <ion-label>Paciente</ion-label>
+
           <ion-select [(ngModel)]="dataSelect"  [(ngModel)]="consulta_json.paciente_id" #paciente_id="ngModel" ngModel name="paciente_id" requerid>
             <ion-option *ngFor="let paciente of pacientes" [value]='paciente.id'>{{ paciente.nome }}</ion-option>
           </ion-select>
@@ -54,6 +55,7 @@
         </ion-item>
         <div *ngIf='horario.invalid && (horario.dirty || horario.touched)'>
           <p *ngIf="horario.errors.required">Este campo é obrigatório</p>
+          <p *ngIf="!data.value">Preencha o campo Data primeiro</p>
         </div>
 
         <ion-item>

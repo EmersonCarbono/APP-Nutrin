@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>cadastrar-anamnese</ion-title>
+    <ion-title>Cadastrar Anamnese</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -14,78 +14,120 @@
       <ion-input type="number" id="qtdAtividadeFisica" ngModel name="qtdAtividadeFisica" ngModel #qtdAtividadeFisica="ngModel"
         required></ion-input>
     </ion-item>
+    <div *ngIf='qtdAtividadeFisica.invalid && (qtdAtividadeFisica.dirty || qtdAtividadeFisica.touched)'>
+      <p *ngIf="qtdAtividadeFisica.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Tipo de Exercicio</ion-label>
       <ion-input type="text" id="tipoExercicio" ngModel name="tipoExercicio" ngModel #tipoExercicio="ngModel" required></ion-input>
     </ion-item>
+    <div *ngIf='tipoExercicio.invalid && (tipoExercicio.dirty || tipoExercicio.touched)'>
+      <p *ngIf="tipoExercicio.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-datetime displayFormat="HH:mm" [(ngModel)]="myDate" id="horaAcorda" ngModel name="horaAcorda" ngModel #horaAcorda="ngModel" required></ion-datetime>
       <ion-label floating>Horario que Acorda</ion-label>
     </ion-item>
+    <div *ngIf='horaAcorda.invalid && (horaAcorda.dirty || horaAcorda.touched)'>
+      <p *ngIf="horaAcorda.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Padrão de Refeição</ion-label>
       <ion-input type="text" id="padraoRefeicao" ngModel name="padraoRefeicao" ngModel #padraoRefeicao="ngModel"
         required></ion-input>
     </ion-item>
+    <div *ngIf='padraoRefeicao.invalid && (padraoRefeicao.dirty || padraoRefeicao.touched)'>
+      <p *ngIf="padraoRefeicao.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Padrão de Refeição</ion-label>
       <ion-input type="text" id="deficienciaAlimentacaoDiaria" ngModel name="deficienciaAlimentacaoDiaria" ngModel
         #deficienciaAlimentacaoDiaria="ngModel" required></ion-input>
     </ion-item>
+    <div *ngIf='deficienciaAlimentacaoDiaria.invalid && (deficienciaAlimentacaoDiaria.dirty || deficienciaAlimentacaoDiaria.touched)'>
+      <p *ngIf="deficienciaAlimentacaoDiaria.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Necessita Suplemento Alimentar</ion-label>
       <ion-input type="text" id="necessitaSuplementoAlimentar" ngModel name="necessitaSuplementoAlimentar" ngModel
         #necessitaSuplementoAlimentar="ngModel" required></ion-input>
     </ion-item>
+    <div *ngIf='necessitaSuplementoAlimentar.invalid && (necessitaSuplementoAlimentar.dirty || necessitaSuplementoAlimentar.touched)'>
+      <p *ngIf="necessitaSuplementoAlimentar.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Retenção de liquido</ion-label>
         <ion-checkbox id="retencaoLiquido" ngModel name="retencaoLiquido" ngModel #retencaoLiquido="ngModel" disabled="true"></ion-checkbox>
     </ion-item>
+    <div *ngIf='retencaoLiquido.invalid && (retencaoLiquido.dirty || retencaoLiquido.touched)'>
+      <p *ngIf="retencaoLiquido.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Alergia a remedio</ion-label>
       <ion-input type="text" id="alergiaRemedio" ngModel name="alergiaRemedio" ngModel #alergiaRemedio="ngModel"
         required></ion-input>
     </ion-item>
+    <div *ngIf='alergiaRemedio.invalid && (alergiaRemedio.dirty || alergiaRemedio.touched)'>
+      <p *ngIf="alergiaRemedio.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Alergia a suplemento</ion-label>
       <ion-input type="text" id="alergiaSuplemento" ngModel name="alergiaSuplemento" ngModel #alergiaSuplemento="ngModel"
         required></ion-input>
     </ion-item>
+    <div *ngIf='alergiaSuplemento.invalid && (alergiaSuplemento.dirty || alergiaSuplemento.touched)'>
+      <p *ngIf="alergiaSuplemento.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Intolerancia alimentar</ion-label>
       <ion-input type="text" id="intoleranciaAlimentar" ngModel name="intoleranciaAlimentar" ngModel
         #intoleranciaAlimentar="ngModel" required></ion-input>
     </ion-item>
+    <div *ngIf='intoleranciaAlimentar.invalid && (intoleranciaAlimentar.dirty || intoleranciaAlimentar.touched)'>
+      <p *ngIf="intoleranciaAlimentar.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Ploblema de Saude</ion-label>
       <ion-input type="text" id="problemaSaude" ngModel name="problemaSaude" ngModel #problemaSaude="ngModel" required></ion-input>
     </ion-item>
+    <div *ngIf='problemaSaude.invalid && (problemaSaude.dirty || problemaSaude.touched)'>
+      <p *ngIf="problemaSaude.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Ploblema de Saude na familia</ion-label>
       <ion-input type="text" id="problemaSaudeFamilia" ngModel name="problemaSaudeFamilia" ngModel
         #problemaSaudeFamilia="ngModel" required></ion-input>
     </ion-item>
+    <div *ngIf='problemaSaudeFamilia.invalid && (problemaSaudeFamilia.dirty || problemaSaudeFamilia.touched)'>
+      <p *ngIf="problemaSaudeFamilia.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Medicação</ion-label>
       <ion-input type="text" id="medicacao" ngModel name="medicacao" ngModel #medicacao="ngModel" required></ion-input>
     </ion-item>
+    <div *ngIf='medicacao.invalid && (medicacao.dirty || medicacao.touched)'>
+      <p *ngIf="medicacao.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <ion-item>
       <ion-label floating>Suplementação</ion-label>
       <ion-input type="text" id="suplementacao" ngModel name="suplementacao" ngModel #suplementacao="ngModel" required></ion-input>
     </ion-item>
+    <div *ngIf='suplementacao.invalid && (suplementacao.dirty || suplementacao.touched)'>
+      <p *ngIf="suplementacao.errors.required">Este campo é obrigatório</p>
+    </div>
 
     <div>
       <button [disabled]="!FormCadastrar.valid" ion-button full block class="btn">Salvar</button>
