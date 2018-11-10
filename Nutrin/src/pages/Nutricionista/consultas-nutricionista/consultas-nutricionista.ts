@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { ConsultasProvider } from '../../../providers/consultas/consultas';
+import { DetalheConsultaPage } from '../detalhe-consulta/detalhe-consulta';
 
 @IonicPage()
 @Component({
@@ -81,6 +82,12 @@ export class ConsultasNutricionistaPage {
 
   pushPage(pagina: string) {
     this.navCtrl.push(pagina);
+  }
+
+  consultaDetalhada(consulta: any) {
+    this.navCtrl.push(DetalheConsultaPage, {
+      consultaSelecionado: consulta
+    });
   }
 
   ionViewDidLoad() {

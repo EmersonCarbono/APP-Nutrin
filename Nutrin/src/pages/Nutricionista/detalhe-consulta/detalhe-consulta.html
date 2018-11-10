@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>detalheConsulta</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+
+    <ion-item>
+
+      <h1>{{ consulta.tipoAtendimento_id }}</h1>
+      <p>{{ consulta.tipoEstado_id }}</p>
+      <p>{{ consulta.paciente_id.nome }}</p>
+      <p>{{ consulta.horario_id[0] }} / {{ consulta.horario_id[1] }}</p>
+
+      <button ion-button full>Inserir Dieta</button>
+      <button ion-button full>Criar Antropometria</button>
+
+    </ion-item>
+
+  </ion-card>
+</ion-content>
