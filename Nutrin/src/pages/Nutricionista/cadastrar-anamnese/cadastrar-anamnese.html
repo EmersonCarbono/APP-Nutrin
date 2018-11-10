@@ -11,7 +11,7 @@
   <form #FormCadastrar="ngForm" class="formController" (ngSubmit)="cadastrarAnamnese(FormCadastrar)">
     <ion-item>
       <ion-label floating>Quantidade de Atividade Fisica</ion-label>
-      <ion-input type="number" id="qtdAtividadeFisica" ngModel name="qtdAtividadeFisica" #qtdAtividadeFisica="ngModel"
+      <ion-input type="number" id="qtdAtividadeFisica" ngModel name="qtdAtividadeFisica" ngModel #qtdAtividadeFisica="ngModel"
         required></ion-input>
     </ion-item>
     <div *ngIf='qtdAtividadeFisica.invalid && (qtdAtividadeFisica.dirty || qtdAtividadeFisica.touched)'>
