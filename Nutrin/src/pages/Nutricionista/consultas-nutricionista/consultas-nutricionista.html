@@ -2,22 +2,17 @@
   <ion-navbar>
     <ion-item>
       <ion-title item-start>Lista de Consultas</ion-title>
-      <ion-icon name="more" item-end (click)="filtroSelect()"></ion-icon>
     </ion-item>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
-  <div padding>
-    <span #idConsulta>15</span>
+  <div>
   
     <ion-segment [(ngModel)]="filtro">
-      <ion-segment-button value="confirmados">
-        Confirmados
-      </ion-segment-button>
-      <ion-segment-button value="solicitados">
-        Solicitados
+      <ion-segment-button value="agendados">
+        Agendado
       </ion-segment-button>
       <ion-segment-button value="realizados">
         Realizados
@@ -28,110 +23,51 @@
 
   <div [ngSwitch]="filtro">
 
-    <div *ngSwitchCase="'confirmados'">
-      <ion-card *ngFor="let consulta of consultas">
-        <div *ngIf="consulta.tipoEstado_id == 'AGENDADO'">
-          <ion-item item-start>
-            <ion-avatar item-start (click)="consultaDetalhada(consulta)">
-              <img src="../../../assets/imgs/fotoPerfil.jpg" />
-            </ion-avatar>
-            <h2>{{ consulta.paciente_id.nome }}</h2>
-            <ion-badge color="primary">{{ consulta.tipoEstado_id }}</ion-badge>
-      
-            <ion-icon name="more" color="primary" item-end (click)="acoesSelect()">
-            </ion-icon>
-          </ion-item>
-      
-          <ion-card-content>
-            <h1 class="title">{{ consulta.tipoAtendimento_id }}</h1>
-            
-      
-            <ion-row class="info-consulta">
-      
-              <ion-col>
-                <ion-icon name="calendar"></ion-icon>
-                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[1] }}</span>
-              </ion-col>
-      
-              <ion-col>
-                <ion-icon name="clock"></ion-icon>
-                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[0] }}</span>
-              </ion-col>
-            </ion-row>
-      
-          </ion-card-content>
-        </div>
-      </ion-card>
-    </div>
+    <div *ngSwitchCase="'agendados'">
 
-    <div *ngSwitchCase="'solicitados'">
-      <ion-card *ngFor="let consulta of consultas">
-        <div *ngIf="consulta.tipoEstado_id == 'SOLICITADO'">
-          <ion-item item-start (click)="consultaDetalhada(consulta)">
-            <ion-avatar item-start>
-              <img src="../../../assets/imgs/fotoPerfil.jpg" />
-            </ion-avatar>
-            <h2>{{ consulta.paciente_id.nome }}</h2>
-            <ion-badge color="secondary">{{ consulta.tipoEstado_id }}</ion-badge>
-    
-            <ion-icon name="more" color="primary" item-end (click)="acoesSelect()">
-            </ion-icon>
+      <ion-list *ngFor="let consulta of consultas">
+
+        <ion-item-sliding *ngIf="consulta.tipoEstado_id == 'AGENDADO'">
+          <ion-item class="item-agendado" (click)="consultaDetalhada(consulta)">
+            <h2 class="title">{{ consulta.tipoAtendimento_id }}</h2>
+            <p>Paciente: {{ consulta.paciente_id.nome }}</p>
+            <p *ngIf="consulta.horario_id != null ">Data: {{ consulta.horario_id[1] }} / Horario: {{ consulta.horario_id[0] }} horas</p>
           </ion-item>
-    
-          <ion-card-content>
-            <h1 class="title">{{ consulta.tipoAtendimento_id }}</h1>
-    
-            <ion-row class="info-consulta">
-    
-              <ion-col>
-                <ion-icon name="calendar"></ion-icon>
-                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[1] }}</span>
-              </ion-col>
-    
-              <ion-col>
-                <ion-icon name="clock"></ion-icon>
-                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[0] }}</span>
-              </ion-col>
-            </ion-row>
-    
-          </ion-card-content>
-        </div>
-      </ion-card>
+          <ion-item-options side="right">
+            <button ion-button color="primary" (click)="alterarEstadoConsulta(consulta, 'REALIZADO')">
+              <ion-icon name="checkmark"></ion-icon>
+              Realizado
+            </button>
+            <button ion-button color="danger" (click)="deletarConsulta(consulta.id)">
+              <ion-icon name="trash"></ion-icon>
+              Deletar
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+
+      </ion-list>
+
     </div>
 
     <div *ngSwitchCase="'realizados'">
-      <ion-card *ngFor="let consulta of consultas">
-        <div *ngIf="consulta.tipoEstado_id == 'REALIZADO'">
-          <ion-item item-start (click)="consultaDetalhada(consulta)">
-            <ion-avatar item-start>
-              <img src="../../../assets/imgs/fotoPerfil.jpg" />
-            </ion-avatar>
-            <h2>{{ consulta.paciente_id.nome }}</h2>
-            <ion-badge color="primary">{{ consulta.tipoEstado_id }}</ion-badge>
-    
-            <ion-icon name="more" color="primary" item-end (click)="acoesSelect()">
-            </ion-icon>
+      <ion-list *ngFor="let consulta of consultas">
+      
+        <ion-item-sliding *ngIf="consulta.tipoEstado_id == 'REALIZADO'">
+          <ion-item class="item-realizado" (click)="consultaDetalhada(consulta)">
+            <h2 class="title">{{ consulta.tipoAtendimento_id }}</h2>
+            <p>Paciente: {{ consulta.paciente_id.nome }}</p>
+            <p *ngIf="consulta.horario_id != null ">Data: {{ consulta.horario_id[1] }} / Horario: {{ consulta.horario_id[0] }} horas</p>
           </ion-item>
-    
-          <ion-card-content>
-            <h1 class="title">{{ consulta.tipoAtendimento_id }}</h1>
-    
-            <ion-row class="info-consulta">
-    
-              <ion-col>
-                <ion-icon name="calendar"></ion-icon>
-                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[1] }}</span>
-              </ion-col>
-    
-              <ion-col>
-                <ion-icon name="clock"></ion-icon>
-                <span *ngIf="consulta.horario_id != null ">{{ consulta.horario_id[0] }}</span>
-              </ion-col>
-            </ion-row>
-    
-          </ion-card-content>
-        </div>
-      </ion-card>
+          <ion-item-options side="right">
+            <button ion-button color="danger" (click)="deletarConsulta(consulta.id)">
+              <ion-icon name="trash"></ion-icon>
+              Deletar
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      
+      </ion-list>
+
     </div>
 
   </div>

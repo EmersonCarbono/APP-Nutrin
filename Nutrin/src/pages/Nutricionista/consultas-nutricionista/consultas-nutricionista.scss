@@ -20,4 +20,16 @@ page-consultas-nutricionista {
             }
         }
     }
+
+    .item-agendado {
+        border-left: 8px solid map-get($colors, secondary)
+    }
+
+    .item-realizado {
+        border-left: 8px solid map-get($colors, primary)
+    }
+
+    .title {
+        font-weight: bolder;
+    }
 }
