@@ -12,4 +12,48 @@
 
 <ion-content padding>
 
+  <ion-grid>
+
+    <ion-row>
+      <ion-col col-6 (click)="pushPage('ConsultasNutricionistaPage')">
+        <ion-card>
+          <div class="bol">
+            <img src="./assets/imgs/appointment.png" />
+          </div>
+          <h2>CONSULTAS</h2>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-6 (click)="pushPage('PacientesPage')">
+        <ion-card>
+          <div class="bol">
+            <img src="./assets/imgs/approved.png" />
+          </div>
+          <h2>PACIENTES</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-6 (click)="pushPage('PerfilPage')">
+        <ion-card>
+          <div class="bol">
+            <img src="./assets/imgs/identity.png" />
+          </div>
+          <h2>PERFIL</h2>
+        </ion-card>
+      </ion-col>
+    
+      <ion-col col-6>
+        <ion-card>
+          <div class="bol" (click)="pushPage('AgendarConsultaPage')">
+            <img src="./assets/imgs/resume.png" />
+          </div>
+          <h2>AGENDAR</h2>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
 </ion-content>
