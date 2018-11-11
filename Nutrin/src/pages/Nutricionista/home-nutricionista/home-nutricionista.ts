@@ -11,6 +11,10 @@ export class HomeNutricionistaPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  pushPage(pagina: string) {
+    this.navCtrl.push(pagina);
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomeNutricionistaPage');
   }
