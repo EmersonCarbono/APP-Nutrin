@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ConsultasProvider } from '../../../providers/consultas/consultas';
 import { AlterarConsultaPage } from '../alterar-consulta/alterar-consulta'
 import { DetalheConsultaPage } from '../detalhe-consulta/detalhe-consulta';
@@ -19,73 +19,40 @@ export class ConsultasNutricionistaPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public actionsheetCtrl: ActionSheetController,
+    public alertCtrl: AlertController,
     public consultasProvider: ConsultasProvider
   ) {
-    this.filtro = "confirmados";
-  }
-
-  filtroSelect() {
-    let filtro = this.actionsheetCtrl.create({
-      title: 'Filtrar por',
-      cssClass: 'action-sheets-basic-page',
-      buttons: [
-        {
-          text: 'Consultas Solicitadas',
-          role: 'destructive',
-          handler: () => {
-            this.navCtrl.push("ConsultasSolicitadasPage");
-          }
-        },
-        {
-          text: 'Confirmados',
-          role: 'destructive',
-          handler: () => {
-            console.log("Confirmados");
-          }
-        }
-      ]
-    });
-    filtro.present();
-  }
-
-  acoesSelect() {
-    let acoes = this.actionsheetCtrl.create({
-      title: 'Ações',
-      cssClass: 'action-sheets-basic-page',
-      buttons: [
-        {
-          text: 'Realizado',
-          role: 'destructive',
-          icon: 'checkmark',
-          handler: () => {
-            console.log("confirmar");
-          }
-        },
-        {
-          text: 'Editar',
-          role: 'destructive',
-          icon: 'create',
-          handler: () => {
-            //this.navCtrl.push('AlterarConsultaPage', );
-            console.log(this.id_consulta.innerText);
-          }
-        },
-        {
-          text: 'Deletar',
-          role: 'destructive',
-          icon: 'trash',
-          handler: () => {
-            console.log("deletar");
-          }
-        }
-      ]
-    });
-    acoes.present();
+    this.filtro = "agendados";
   }
 
   pushPage(pagina: string) {
     this.navCtrl.push(pagina);
+  }
+
+  alterarEstadoConsulta(consulta:any, estado:string) {
+    return console.log(consulta, estado); // função para alterar estado da consulta
+  }
+
+  deletarConsulta(id:any) {
+    const alert = this.alertCtrl.create({
+      title: 'AVISO!',
+      message: 'Tem certeza que você quer deletar essa consulta?',
+      buttons: [
+        {
+          text: 'Sim',
+          handler: data => {
+            console.log(id);
+          }
+        },
+        {
+          text: 'Não',
+          handler: data => {
+            console.log("nenhuma ação");
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   consultaDetalhada(consulta: any) {
