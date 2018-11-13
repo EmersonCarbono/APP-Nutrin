@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, Refresher } from 'ionic-angular';
 import { ConsultasProvider } from '../../../providers/consultas/consultas';
-import { AlterarConsultaPage } from '../alterar-consulta/alterar-consulta'
+import { AlterarConsultaPage } from '../alterar-consulta/alterar-consulta';
 import { DetalheConsultaPage } from '../detalhe-consulta/detalhe-consulta';
 
 
@@ -20,7 +20,8 @@ export class ConsultasNutricionistaPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public consultasProvider: ConsultasProvider
+    public loadingCtrl: LoadingController,
+    public consultasProvider: ConsultasProvider,
   ) {
     this.filtro = "agendados";
   }
@@ -41,7 +42,9 @@ export class ConsultasNutricionistaPage {
         {
           text: 'Sim',
           handler: data => {
-            console.log(id);
+            this.consultasProvider.consultaDelete(id).subscribe(
+              (action) => {  }
+            );
           }
         },
         {
@@ -61,10 +64,18 @@ export class ConsultasNutricionistaPage {
     });
   }
 
-  ionViewDidLoad() {
+  getConsultas() {
     this.consultasProvider.consultasRead().subscribe(
       (dados) => { this.consultas = dados["Dados"]; }
     );
+  }
+
+  ionViewDidLoad() {
+    this.getConsultas();
+  }
+
+  ionViewDidEnter() {
+    this.getConsultas();
   }
 
 }

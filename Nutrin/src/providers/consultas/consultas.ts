@@ -55,6 +55,6 @@ export class ConsultasProvider {
   }
 
   public consultaDelete(id) {
-    return this.http.get(this.base + "/consulta/deletar/" + id);
+    return this.http.delete(this.base + "/consultas/delete/" + id);
   }
 }
