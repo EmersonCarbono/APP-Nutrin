@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AntropometriaProvider } from '../../../providers/antropometria/antropometria';
+import { ConsultasProvider } from '../../../providers/consultas/consultas';
 
 @IonicPage()
 @Component({
@@ -9,31 +10,17 @@ import { AntropometriaProvider } from '../../../providers/antropometria/antropom
 })
 export class CadastrarAntropometriaPage {
 
-  formAntropometria:any = {
-    peso: 0.0,
-    braco: 0.0,
-    torax: 0.0,
-    cintura: 0.0,
-    abdomen: 0.0,
-    quadril: 0.0,
-    coxa: 0.0,
-    biceps: 0.0,
-    triceps: 0.0,
-    peito: 0.0,
-    subsCap: 0.0,
-    axilar: 0.0,
-    gorduraPerc: 0.0,
-    aguaPerc: 0.0,
-    pesoMagro: 0.0
-  }
-
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public antropometriaProvider: AntropometriaProvider,
+    public consultaProvider: ConsultasProvider,
     public alertCtrl: AlertController,
     ) {
   }
+
+  public formAntropometria = this.antropometriaProvider.getJson();
+  public consulta = this.navParams.get('consulta')
 
   showAlert(title, mensagem) {
     const alert = this.alertCtrl.create({
@@ -49,12 +36,24 @@ export class CadastrarAntropometriaPage {
     this.antropometriaProvider.antropometriaCreate(this.formAntropometria).subscribe(
       data => {
         const response = (data as any);
-        this.showAlert(response.Status, response.Mensagem);
+        console.log(response.Dados);
+        if(response.Status == "Sucesso"){
+          this.consultaProvider.adiconarAntropometria(response.Dados, this.consulta.id).subscribe(
+            (data) => {
+              const response = (data as any);
+              if (response.Status == "Sucesso"){
+                this.showAlert(response.Status, response.Mensagem);
+                this.navCtrl.pop();
+              }
+            }
+          );
+        }
       }
     )
   }
 
   ionViewDidLoad() {
+    
   }
 
 }

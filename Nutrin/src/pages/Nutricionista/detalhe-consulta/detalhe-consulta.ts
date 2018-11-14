@@ -17,6 +17,12 @@ export class DetalheConsultaPage {
     this.consulta = this.navParams.get('consultaSelecionado');
   }
 
+  public pushCadastrarAntropometria(){
+    this.navCtrl.push("CadastrarAntropometriaPage", {
+      consulta : this.consulta
+    });
+  }
+
   ionViewDidLoad() {
     console.log(this.consulta);
   }

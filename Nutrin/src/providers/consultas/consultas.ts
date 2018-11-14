@@ -29,6 +29,14 @@ export class ConsultasProvider {
     return this.consulta_json;
   }
 
+  public adiconarAntropometria(id_antropometria, id_consulta){
+    let dados = {
+      id_antropometria: id_antropometria,
+      id_consulta: id_consulta
+    }
+    return this.http.put(this.base + '/consultas/antropometria', dados)
+  }
+
   public consultasRead() {
     return this.http.get(this.base + "/consultas");
   }

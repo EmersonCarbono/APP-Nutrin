@@ -8,6 +8,28 @@ export class AntropometriaProvider {
 
   constructor(public http: HttpClient) {}
 
+  private json_antropometria = {
+    peso: null,
+    braco: null,
+    torax: null,
+    cintura: null,
+    abdomen: null,
+    quadril: null,
+    coxa: null,
+    biceps: null,
+    triceps: null,
+    peito: null,
+    subsCap: null,
+    axilar: null,
+    gorduraPerc: null,
+    aguaPerc: null,
+    pesoMagro: null,
+  }
+
+  public getJson(){
+    return this.json_antropometria;
+  }
+
   public antropometriaRead() {
     return this.http.get(this.base + "/antropometria");
   }
