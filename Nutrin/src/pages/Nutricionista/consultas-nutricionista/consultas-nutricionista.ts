@@ -43,7 +43,7 @@ export class ConsultasNutricionistaPage {
           text: 'Sim',
           handler: data => {
             this.consultasProvider.consultaDelete(id).subscribe(
-              (action) => {  }
+              (action) => { this.getConsultas(); }
             );
           }
         },
