@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -12,15 +12,42 @@ export class DetalheConsultaPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public alertCtrl: AlertController
   ) {
     this.consulta = this.navParams.get('consultaSelecionado');
   }
 
-  public pushCadastrarAntropometria(){
-    this.navCtrl.push("CadastrarAntropometriaPage", {
-      consulta : this.consulta
+  showAlert() {
+    const alert = this.alertCtrl.create({
+      title: 
+      "Antropometria não cadastrada",
+      subTitle: 
+      "Deseja cadastrar agora?",
+      buttons: [
+        {
+          text: 'Sim',
+          handler: data => {
+            this.navCtrl.push("CadastrarAntropometriaPage", {
+             consulta : this.consulta
+            })
+          }
+        },
+        {
+          text: 'Não',
+          handler: data => {
+            console.log('Não');
+          }
+        },
+      ]
     });
+    alert.present();
+  }
+
+  public pushCadastrarAntropometria(){
+    if (this.consulta.antropometria_id == null){
+      this.showAlert();
+    }
   }
 
   ionViewDidLoad() {
