@@ -42,7 +42,7 @@ export class ConsultasProvider {
   }
 
   public consultaById(id) {
-    return this.http.get(this.base + "/consulta/buscar/" + id);
+    return this.http.get(this.base + "/consulta/" + id);
   }
 
   public consultaCreate(dados: any) {

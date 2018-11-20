@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { ConsultasProvider } from '../../../providers/consultas/consultas';
 
 @IonicPage()
 @Component({
@@ -8,14 +9,29 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class DetalheConsultaPage {
 
-  consulta:any
+  consulta:any = null;
+
+  private getConsultaDados(){
+    if (this.consulta == null){
+      this.consulta = this.navParams.get('consultaSelecionado');
+    } else {
+      this.consultasProvider.consultaById(this.consulta.id).subscribe(
+        (data) => {
+            const response = (data as any);
+            this.consulta = response.Dados[0];
+            console.log(this.consulta);
+        }
+      );
+    }
+  }
 
   constructor(
-    public navCtrl: NavController,
+    public navCtrl: NavController,  
     public navParams: NavParams,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public consultasProvider: ConsultasProvider
   ) {
-    this.consulta = this.navParams.get('consultaSelecionado');
+    this.getConsultaDados();
   }
 
   showAlert() {
@@ -47,11 +63,19 @@ export class DetalheConsultaPage {
   public pushCadastrarAntropometria(){
     if (this.consulta.antropometria_id == null){
       this.showAlert();
+    }else{
+      this.navCtrl.push("AntropometriaPage", {
+        consulta: this.consulta
+      });
     }
   }
 
   ionViewDidLoad() {
-    console.log(this.consulta);
+
+  }
+
+  ionViewDidEnter(){
+    this.getConsultaDados();
   }
 
 }

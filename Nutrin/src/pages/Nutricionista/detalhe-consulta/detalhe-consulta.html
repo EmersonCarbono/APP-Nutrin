@@ -7,19 +7,21 @@
 
 <ion-content padding>
   <ion-card>
-
     <ion-item>
-
       <h1>{{ consulta.tipoAtendimento_id }}</h1>
       <p>{{ consulta.tipoEstado_id }}</p>
       <p>{{ consulta.paciente_id.nome }}</p>
       <p>{{ consulta.horario_id[0] }} / {{ consulta.horario_id[1] }}</p>
-
       <button ion-button full>Inserir Dieta</button>
-      <button ion-button (click)="pushCadastrarAntropometria()" full>Criar Antropometria</button>
-
     </ion-item>
-
   </ion-card>
-  
+
+  <ion-fab left bottom>
+    <button ion-fab color="light"><ion-icon name="arrow-up"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab (click)="pushCadastrarAntropometria()">Antropometria</button>
+      <button ion-fab>Dieta</button>
+    </ion-fab-list>
+  </ion-fab>
+
 </ion-content>
