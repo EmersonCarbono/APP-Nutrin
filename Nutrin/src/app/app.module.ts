@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ChartsModule } from 'ng2-charts';
 
 // importando as paginas
 import { LoginPageModule } from '../pages/login/login.module';
@@ -35,6 +36,7 @@ import { HorarioProvider } from '../providers/horario/horario';
     SidePageModule,
     HttpClientModule,
     HttpModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
