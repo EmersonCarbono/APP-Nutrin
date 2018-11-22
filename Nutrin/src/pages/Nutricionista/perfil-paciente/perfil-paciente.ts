@@ -22,7 +22,7 @@ export class PerfilPacientePage {
     this.pacienteProvider.pesquisar_paciente(this.navParams.get("nome_paciente")).subscribe(
         data => {
             const response = (data as any);
-            this.paciente = response.Dados;
+            this.paciente = response;
           }
       )
   }
