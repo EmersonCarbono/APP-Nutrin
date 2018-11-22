@@ -1,12 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AntropometriaProvider {
 
   base = "/nutrin_api";
 
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient) { }
+
+  private responseAntropometria = {
+    "Dados": {
+      "abdomen": null,
+      "aguaPerc": null,
+      "axilar": null,
+      "biceps": null,
+      "braco": null,
+      "cintura": null,
+      "coxa": null,
+      "gorduraPerc": null,
+      "peito": null,
+      "peso": null,
+      "pesoMagro": null,
+      "quadril": null,
+      "subsCap": null,
+      "torax": null,
+      "triceps": null
+    },
+    "Mensagem": null,
+    "Status": null
+  }
 
   private json_antropometria = {
     peso: null,
@@ -26,7 +49,7 @@ export class AntropometriaProvider {
     pesoMagro: null,
   }
 
-  public getJson(){
+  public getJson() {
     return this.json_antropometria;
   }
 
@@ -35,7 +58,7 @@ export class AntropometriaProvider {
   }
 
   public antropometriaById(id) {
-    return this.http.get(this.base + "/antropometria/buscar/" + id)
+    return this.http.get(this.base + "/antropometria/buscar/" + id);
   }
 
   public antropometriaCreate(dados: any) {

@@ -1,0 +1,21 @@
+page-antropometria {
+    @import "./theme/theme.scss";
+
+    .item_antropometria{
+        font-size: 1em;
+        background-color: map-get($colors, background);
+    }
+
+    .label_item{
+        font-weight: bold;
+        margin: 2px 0;
+    }
+
+    .item{
+        background-color: map-get($colors, background);
+    }
+
+    .list{
+        background-color: map-get($colors, background);
+    }
+}
