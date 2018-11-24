@@ -31,7 +31,7 @@
           <ion-item class="item-agendado" (click)="consultaDetalhada(consulta)">
             <h2 class="title">{{ consulta.tipoAtendimento_id }}</h2>
             <p>Paciente: {{ consulta.paciente_id.nome }}</p>
-            <p *ngIf="consulta.horario_id != null ">Data: {{ consulta.horario_id[1] }} / Horario: {{ consulta.horario_id[0] }} horas</p>
+            <p *ngIf="consulta.horario_id != null ">Data: {{ consulta.horario_id[3] }} / Horario: {{ consulta.horario_id[1] }} ás {{ consulta.horario_id[2] }} horas</p>
           </ion-item>
           <ion-item-options side="right">
             <button ion-button color="primary" (click)="alterarEstadoConsulta(consulta, 'REALIZADO')">
@@ -56,7 +56,7 @@
           <ion-item class="item-realizado" (click)="consultaDetalhada(consulta)">
             <h2 class="title">{{ consulta.tipoAtendimento_id }}</h2>
             <p>Paciente: {{ consulta.paciente_id.nome }}</p>
-            <p *ngIf="consulta.horario_id != null ">Data: {{ consulta.horario_id[1] }} / Horario: {{ consulta.horario_id[0] }} horas</p>
+            <p *ngIf="consulta.horario_id != null ">Data: {{ consulta.horario_id[3] }} / Horario: {{ consulta.horario_id[1] }} ás {{ consulta.horario_id[2] }}  horas</p>
           </ion-item>
           <ion-item-options side="right">
             <button ion-button color="danger" (click)="deletarConsulta(consulta.id)">

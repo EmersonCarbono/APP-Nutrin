@@ -10,9 +10,9 @@
     <ion-item>
       <h1>{{ consulta.tipoAtendimento_id }}</h1>
       <p>{{ consulta.tipoEstado_id }}</p>
-      <p>{{ consulta.paciente_id.nome }}</p>
-      <p>{{ consulta.horario_id[0] }} / {{ consulta.horario_id[1] }}</p>
-      <button ion-button full>Inserir Dieta</button>
+      <p>Paciente: {{ consulta.paciente_id.nome }}</p>
+      <p>Data: {{ consulta.horario_id[3] }}</p>
+      <p>Horario: {{ consulta.horario_id[1] }} ás {{ consulta.horario_id[2] }} horas</p>
     </ion-item>
   </ion-card>
 
@@ -20,7 +20,6 @@
     <button ion-fab color="primary"><ion-icon name="arrow-up"></ion-icon></button>
     <ion-fab-list side="top">
       <button ion-fab (click)="pushCadastrarAntropometria()">Antropometria</button>
-      <button ion-fab>Dieta</button>
     </ion-fab-list>
   </ion-fab>
 
