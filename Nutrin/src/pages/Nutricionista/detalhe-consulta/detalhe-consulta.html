@@ -16,11 +16,13 @@
     </ion-item>
   </ion-card>
 
-  <ion-fab left bottom>
-    <button ion-fab color="primary"><ion-icon name="arrow-up"></ion-icon></button>
-    <ion-fab-list side="top">
-      <button ion-fab (click)="pushCadastrarAntropometria()">Antropometria</button>
-    </ion-fab-list>
-  </ion-fab>
+  <div *ngIf="consulta.tipoEstado_id == 'REALIZADO'">
+    <ion-fab left bottom>
+      <button ion-fab color="primary"><ion-icon name="arrow-up"></ion-icon></button>
+      <ion-fab-list side="top">
+        <button ion-fab (click)="pushCadastrarAntropometria()">Antropometria</button>
+      </ion-fab-list>
+    </ion-fab>
+  </div>
 
 </ion-content>
