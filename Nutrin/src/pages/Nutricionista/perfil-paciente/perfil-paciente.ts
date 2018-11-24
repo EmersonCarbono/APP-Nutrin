@@ -10,6 +10,7 @@ import { PacienteProvider } from '../../../providers/pacientes/paciente';
 export class PerfilPacientePage {
 
   paciente = new Array<any>();
+  sexo = "";
 
 
   constructor(
@@ -22,10 +23,17 @@ export class PerfilPacientePage {
     this.pacienteProvider.pesquisar_paciente(this.navParams.get("nome_paciente")).subscribe(
         data => {
             const response = (data as any);
-            this.paciente = response;
+            this.paciente = response["Dados"];
+            if (this.paciente["sexo"] == "M") {
+              this.sexo = "Masculino";
+            } else {
+              this.sexo = "Feminino";
+            };
           }
-      )
+      );
   }
+
+
 
   ionViewDidLoad() {
     this.carregarDados();
