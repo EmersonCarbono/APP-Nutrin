@@ -1,3 +1,8 @@
 page-detalhe-consulta {
     @import "../../../theme/theme.scss";
+
+    .fab-in-list.show {
+        width: 160px;
+        border-radius: 10px;
+    }
 }
