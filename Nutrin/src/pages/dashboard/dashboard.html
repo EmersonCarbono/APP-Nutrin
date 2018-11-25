@@ -8,7 +8,7 @@
 <ion-content padding>
 
   <div style="display: block">
-    <h2 class="subtitulo">Quantidade de Consultas Mensal</h2>
+    <h2 class="subtitulo">{{ tituloConsultas }}</h2>
     <canvas baseChart 
     [datasets]="barChartData" 
     [labels]="barChartLabels" 
@@ -16,6 +16,7 @@
     [legend]="barChartLegend"
     [chartType]="barChartType">
     </canvas>
+    <button ion-button full (click)="positivoNegativo()">{{ botaoConsultas }}</button>
   </div>
 
   <div style="display: block">
