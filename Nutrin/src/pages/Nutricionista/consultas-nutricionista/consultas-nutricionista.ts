@@ -31,7 +31,9 @@ export class ConsultasNutricionistaPage {
   }
 
   alterarEstadoConsulta(consulta:any, estado:string) {
-    return console.log(consulta, estado); // função para alterar estado da consulta
+    this.consultasProvider.tipoEstadoUpdate(consulta, estado).subscribe(
+      (dados) => { this.getConsultas(); }
+    );
   }
 
   deletarConsulta(id:any) {
