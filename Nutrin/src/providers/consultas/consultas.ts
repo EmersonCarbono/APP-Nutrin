@@ -71,6 +71,15 @@ export class ConsultasProvider {
     return this.http.put(this.base + "/consultas/alterarId", dados);
   }
 
+  public pagamentoUpdate(id_consulta, valor) {
+    let dados = {
+      id_consulta: id_consulta,
+      column: "pagamento",
+      id_column: valor
+    };
+    return this.http.put(this.base + "/consultas/alterarId", dados);
+  }
+
   public consultaDelete(id) {
     return this.http.delete(this.base + "/consultas/delete/" + id);
   }

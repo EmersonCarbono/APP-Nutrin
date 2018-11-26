@@ -13,6 +13,12 @@
       <p>Paciente: {{ consulta.paciente_id.nome }}</p>
       <p>Data: {{ consulta.horario_id[3] }}</p>
       <p>Horario: {{ consulta.horario_id[1] }} ás {{ consulta.horario_id[2] }} horas</p>
+      <div *ngIf="consulta.pagamento == false">
+        <p>Pagamento: Não pago</p>
+      </div>
+      <div *ngIf="consulta.pagamento == true">
+        <p>Pagamento: Pago</p>
+      </div>
     </ion-item>
   </ion-card>
 
@@ -20,6 +26,7 @@
       <button ion-fab color="primary"><ion-icon name="arrow-up"></ion-icon></button>
       <ion-fab-list side="top">
         <button ion-fab (click)="pushCadastrarAntropometria()">Antropometria</button>
+        <button ion-fab (click)="pagamento(consulta.id, true)">Pago</button>
       </ion-fab-list>
     </ion-fab>
 
