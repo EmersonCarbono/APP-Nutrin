@@ -34,7 +34,7 @@
             <p *ngIf="consulta.horario_id != null ">Data: {{ consulta.horario_id[3] }} / Horario: {{ consulta.horario_id[1] }} ás {{ consulta.horario_id[2] }} horas</p>
           </ion-item>
           <ion-item-options side="right">
-            <button ion-button color="primary" (click)="alterarEstadoConsulta(consulta, 'REALIZADO')">
+            <button ion-button color="primary" (click)="alterarEstadoConsulta(consulta.id, 2)">
               <ion-icon name="checkmark"></ion-icon>
               Realizado
             </button>

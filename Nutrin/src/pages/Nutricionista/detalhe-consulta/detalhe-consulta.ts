@@ -70,6 +70,12 @@ export class DetalheConsultaPage {
     }
   }
 
+  public pagamento(id, valor) {
+    this.consultasProvider.pagamentoUpdate(id, valor).subscribe(
+      (dados) => { this.getConsultaDados(); }
+    );
+  }
+
   ionViewDidLoad() {
 
   }
