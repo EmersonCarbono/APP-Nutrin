@@ -62,6 +62,10 @@ export class DashboardPage {
     { data: this.qtdConsultasPositivos, label: 'Consultas' }
   ];
 
+  public barChartLabels1: string[] = this.datasPositivos;
+  public barChartData1: any[] = [
+    { data: this.ganho, label: 'Lucro' }
+  ];
   public pieChartLabels: string[] = this.datasPositivos;
   public pieChartData: any[] = this.ganho;
   public pieChartType: string = 'pie';
@@ -71,12 +75,16 @@ export class DashboardPage {
     if (this.pivo == "Positivo") {
       this.barChartLabels = this.datasNegativos;
       this.barChartData = [{ data: this.qtdConsultasNegativos, label: 'Consultas' }];
+      this.barChartData1 = [{ data: this.perdido, label: 'Lucro Perdido' }];
+      this.barChartLabels1 = this.datasNegativos;
       this.pivo = "Negativo";
       this.tituloConsultas = "Consultas não realizadas";
       this.botaoConsultas = "Consultas realizadas";
     } else {
       this.barChartLabels = this.datasPositivos;
       this.barChartData = [{ data: this.qtdConsultasPositivos, label: 'Consultas' }];
+      this.barChartData1 = [{ data: this.ganho, label: 'Lucro' }];
+      this.barChartLabels1 = this.datasPositivos;
       this.pivo = "Positivo";
       this.tituloConsultas = "Consultas realizadas";
       this.botaoConsultas = "Consultas não realizadas";
@@ -85,7 +93,6 @@ export class DashboardPage {
 
   doRefresh(refresher) {
     setTimeout(() => {
-      console.log('Async operation has ended');
       refresher.complete();
     }, 2000);
   }
