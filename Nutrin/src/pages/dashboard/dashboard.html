@@ -6,26 +6,29 @@
 
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+  </ion-refresher-content>
+  </ion-refresher>
+      <div style="display: block">
+        <h2 class="subtitulo">{{ tituloConsultas }}</h2>
+        <canvas baseChart 
+        [datasets]="barChartData" 
+        [labels]="barChartLabels" 
+        [options]="barChartOptions" 
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+        </canvas>
+        <button ion-button full (click)="positivoNegativo()">{{ botaoConsultas }}</button>
+      </div>
 
-  <div style="display: block">
-    <h2 class="subtitulo">{{ tituloConsultas }}</h2>
-    <canvas baseChart 
-    [datasets]="barChartData" 
-    [labels]="barChartLabels" 
-    [options]="barChartOptions" 
-    [legend]="barChartLegend"
-    [chartType]="barChartType">
-    </canvas>
-    <button ion-button full (click)="positivoNegativo()">{{ botaoConsultas }}</button>
-  </div>
-
-  <div style="display: block">
-    <h2 class="subtitulo">Lucro Mensal</h2>
-    <canvas baseChart
-    [data]="pieChartData" 
-    [labels]="pieChartLabels" 
-    [chartType]="pieChartType">
-    </canvas>
-  </div>
+      <div style="display: block">
+        <h2 class="subtitulo">Lucro Mensal</h2>
+        <canvas baseChart
+        [data]="pieChartData" 
+        [labels]="pieChartLabels" 
+        [chartType]="pieChartType">
+        </canvas>
+      </div>
 
 </ion-content>

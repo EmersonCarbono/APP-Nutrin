@@ -18,7 +18,7 @@ export class DashboardPage {
   perdido: any = new Array<any>();
   public tituloConsultas = "Consultas Realizadas";
   public botaoConsultas = "Consultas não Realizadas";
-
+  
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -81,6 +81,13 @@ export class DashboardPage {
       this.tituloConsultas = "Consultas realizadas";
       this.botaoConsultas = "Consultas não realizadas";
     }
+  }
+
+  doRefresh(refresher) {
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   }
 
 
