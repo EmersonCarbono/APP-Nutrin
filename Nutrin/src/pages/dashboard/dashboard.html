@@ -24,10 +24,12 @@
 
       <div style="display: block">
         <h2 class="subtitulo">Lucro Mensal</h2>
-        <canvas baseChart
-        [data]="pieChartData" 
-        [labels]="pieChartLabels" 
-        [chartType]="pieChartType">
+        <canvas baseChart 
+        [datasets]="barChartData1" 
+        [labels]="barChartLabels1"
+         [options]="barChartOptions" 
+         [legend]="barChartLegend"
+          [chartType]="barChartType">
         </canvas>
       </div>
 
